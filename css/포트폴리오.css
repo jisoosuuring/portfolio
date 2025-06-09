@@ -64,8 +64,10 @@ body {
 
 .header .inner ul li a {
     position: relative;
-    text-decoration: none; /* 기본 밑줄 제거 */
-    color: inherit; /* 부모 색상 상속 */
+    text-decoration: none;
+    /* 기본 밑줄 제거 */
+    color: inherit;
+    /* 부모 색상 상속 */
     transition: color 0.3s ease;
 }
 
@@ -77,16 +79,15 @@ body {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -3px; /* 텍스트 아래 간격 */
+    bottom: -3px;
+    /* 텍스트 아래 간격 */
     width: 100%;
     height: 2px;
-    background: repeating-linear-gradient(
-        90deg,
-        #fd95d2 0,
-        #fd95d2 10px,
-        transparent 10px,
-        transparent 20px
-    );
+    background: repeating-linear-gradient(90deg,
+            #fd95d2 0,
+            #fd95d2 10px,
+            transparent 10px,
+            transparent 20px);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
