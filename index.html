@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suuring's PortFolio</title>
+<link rel="stylesheet" href="css/포트폴리오.css">
+<link rel="icon" type="image/png" sizes="16x16" href="img/아이콘.jpg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Alexandria:wght@100..900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Alexandria:wght@100..900&family=Anton&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+        @font-face {
+            font-family: 'SeoulAlrimTTF-Heavy';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2505-1@1.0/SeoulAlrimTTF-Heavy.woff2') format('woff2');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+
+        @font-face {
+            font-family: 'IBMPlexSansKR-Regular';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'HakgyoansimSantteutdotumL';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+
+        @font-face {
+            font-family: 'GmarketSansMedium';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        @font-face {
+            font-family: 'OwnglyphMoogungChae';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/OwnglyphMoogungChae.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+
+        @font-face {
+            font-family: 'HakgyoansimBadasseugiTTF-L';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="lib/gsap.min.js"></script>
+    <script src="lib/SplitText.min.js"></script>
+    <script src="lib/InertiaPlugin.min.js"></script>
+    <script src="lib/ScrambleTextPlugin.min.js"></script>
+    <script>
+        window.onload = () => {
+            // Register GSAP plugins
+            gsap.registerPlugin(SplitText, InertiaPlugin);
+
+            // Wait for fonts to load
+            document.fonts.ready.then(() => {
+                // Set initial styles for animated title
+                gsap.set("h2", { opacity: 1 });
+
+                // Split text for animation
+                const headlineSplit = SplitText.create(".animated-title", {
+                    type: "words",
+                    wordsClass: "word++",
+                    ignore: "sup"
+                });
+
+                // Animate headline
+                gsap.from(headlineSplit.words, {
+                    y: -100,
+                    opacity: 0,
+                    rotation: "random(-80, 80)",
+                    stagger: 0.1,
+                    duration: 1,
+                    ease: "back"
+                });
+            });
+
+
+            // Variables for tracking mouse position
+            let oldX = 0, oldY = 0, deltaX = 0, deltaY = 0;
+
+            const root = document.querySelector('.mwg_effect000');
+
+            if (!root) {
+                console.warn("Element with class '.mwg_effect000' not found.");
+                return;
+            }
+
+            // Track mouse movements
+            root.addEventListener("mousemove", (e) => {
+                deltaX = e.clientX - oldX;
+                deltaY = e.clientY - oldY;
+                oldX = e.clientX;
+                oldY = e.clientY;
+            });
+
+            // Animate each media element
+            root.querySelectorAll('.media').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    const tl = gsap.timeline({
+                        onComplete: () => tl.kill() // Clean up after animation
+                    });
+
+                    tl.timeScale(1.2); // Speed up animation slightly
+
+                    const image = el.querySelector('img');
+                    if (!image) {
+                        console.warn("No image found inside .media element.");
+                        return;
+                    }
+
+                    // Animate inertia
+                    tl.to(image, {
+                        inertia: {
+                            x: {
+                                velocity: deltaX * 30,
+                                end: 0
+                            },
+                            y: {
+                                velocity: deltaY * 30,
+                                end: 0
+                            },
+                        },
+                        duration: 1
+                    });
+
+                    // Add rotation effect
+                    tl.fromTo(image, {
+                        rotate: 0
+                    }, {
+                        duration: 0.4,
+                        rotate: (Math.random() - 0.5) * 30,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: 'power1.inOut'
+                    }, '<');
+                });
+            });
+
+            window.onscroll = function () {
+                const topButton = document.getElementById("topButton");
+                if (document.documentElement.scrollTop > 1080 || document.body.scrollTop > 1080) {
+                    topButton.style.display = "block";
+                } else {
+                    topButton.style.display = "none";
+                }
+            };
+
+            // 페이지 맨 위로 스크롤하는 함수
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+
+            var swiper = new Swiper(".mySwiper2", {
+                slidesPerView: 4,                 // 한 화면에 4개씩 보이게 설정
+                spaceBetween: 30,                 // 슬라이드 간격 30px              
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "progressbar",           // 바 형태로 변경
+                    clickable: true,
+                }
+
+            });
+
+
+            const tl = gsap.timeline({
+                id: "text-scramble",
+                defaults: { ease: "none" }
+            });
+
+            const cursorTl = gsap.timeline({ repeat: -1 });
+
+            gsap.set("#scramble-text-original", {
+                opacity: 0
+            });
+
+            cursorTl
+                .to("#scramble-cursor", {
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "none",
+                    delay: 0.2
+                })
+                .to("#scramble-cursor", {
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: "none",
+                    delay: 0.2
+                });
+
+            tl.to("#scramble-text-1", {
+                scrambleText: {
+                    text: "아직 스크롤 중이신가요?",
+                    chars: "Still here?"
+                },
+                duration: 2
+            })
+                .to("#scramble-text-2", {
+                    scrambleText: {
+                        text: "그럼, 인연입니다. ",
+                        chars: "Maybe that means",
+                        speed: 0.4
+                    },
+                    duration: 2
+                })
+                .to("#scramble-text-3", {
+                    scrambleText: { text: "멋진 프로젝트로 이어지길 바랍니다.", chars: "to create something", speed: 0.3 },
+                    scrambleText: { text: " 우연히 시작된 스크롤이 멋진 프로젝트로 이어지길 바랍니다.", chars: "we’re meant " },
+                    duration: 2
+                })
+                .to("#scramble-text-4", {
+                    scrambleText: { text: "Thank You For Watching", chars: "together", speed: 0.3 },
+                    duration: 1
+                })
+
+                .add(cursorTl);
+
+            window.onclick = () => tl.play(0); // click to replay
+
+
+
+
+        };
+    </script>
+
+
+
+<body>
+    <header class="header">
+        <div class="inner">
+            <h1 class="logo">
+                <a href="#"><img src="img/로고용 고양이.png" alt=""></a>
+            </h1> <!-- logo end -->
+            <nav class="nav">
+                <ul>
+                    <li><a href="#">MAIN</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">PROJECT</a></li>
+                    <li><a href="#">GRAPHIC DESIGN</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav><!-- nav end -->
+        </div> <!-- inner end -->
+    </header>
+
+
+
+    <div class="section-01">
+        <div class="text">
+            <h2 class="animated-title">VERSATILE</h2>
+        </div>
+        <div class="image">
+            <img src="img/고양이.gif" alt="">
+        </div>
+        <div class="scroll">
+            <img src="img/down.png" alt="">
+            <p>scroll</p>
+        </div>
+
+    </div> <!-- section-01 end -->
+
+    <a href="#top" onclick="scrollToTop(); return false;">
+        <button id="topButton">
+            <img src="img/top버튼.png" alt="Top 버튼" style="width: 80px; height: 80px;">
+        </button>
+    </a>
+
+
+
+    <div class="section-02">
+        <h2>
+            "데이터로 니즈를 읽고, 디자인으로 마음을 움직입니다."
+        </h2>
+
+
+        <p>
+            <br />
+            안녕하세요. 기능과 감성을 아우르는 다재다능한 디자이너, 김지수입니다.<br />
+
+            저는 경영정보학을 전공하며 ADsP, SQLD 자격증과 Tableau 시각화 도구를 집중적으로 학습해왔습니다.<br />
+            이 과정에서 데이터 분석의 힘을 체감했고,<br />
+            사용자 중심의 웹사이트 디자인에도 분석적 사고가 필수적이라는 것을 깨달았습니다.<br />
+            <br />
+            단순히 예쁜 화면을 만드는 것이 아닌, 사용자의 행동 데이터를 이해하고, 그 니즈에 설득력 있게 대응하는 디자인을 추구합니다.<br />
+            마케팅의 관점에서 사용자 여정을 설계하고, 그 안에 감성을 담아내는 것이 제 강점입니다.<br />
+            <br />
+            저는 늘 묻습니다.<br />
+            “왜 이 디자인이 필요한가?”<br />
+            “이 요소가 사용자에게 어떤 경험을 줄 수 있을까?”<br />
+            <br />
+            데이터 기반의 통찰과 감성적 표현력을 바탕으로, 사용자와 브랜드 사이의 접점을 가장 효과적으로 설계하는 디자이너가 되겠습니다.
+        </p>
+    </div>
+
+
+
+    <div class="section-03">
+
+        <div class="profile-left">
+            <div class="photo">
+                <img src="img/증사.jpg" alt="증명사진">
+            </div>
+            <div class="info">
+                <h3>
+                    <span class="name-ko">김지수</span>
+                    <span class="name-en">KIM JI SOO</span>
+                </h3>
+                <p>2002.03.07</p>
+                <p><strong>P</strong> 010-4766-5224</p>
+                <p><strong>B</strong> ggp09222@kakao.com</p>
+            </div>
+        </div>
+
+        <div class="profile-right">
+            <div class="career">
+                <h4>CAREER</h4>
+                <ul>
+                    <li>동아대학교 장학생 대표 다우이스트</li>
+                    <li>남산장사회복지관 SNS 서포터즈 2기</li>
+                    <li>동아대학교 경영정보학과 학생회 IT 정보부장</li>
+                    <li>부산광역시 경제 진흥원 조찬 드림미 서포터즈</li>
+                    <li>부산시립시민도서관 평생학습과 인턴</li>
+                </ul>
+            </div>
+
+            <div class="cert-award">
+                <div class="certificate">
+                    <h4>CERTIFICATE & LICENSE</h4>
+                    <ul>
+                        <li>GTQ 1급 &nbsp;&nbsp;&nbsp; 2025.05.16</li>
+                        <li>컴퓨터 활용 능력 2급 &nbsp;&nbsp;&nbsp; 2025.01.28</li>
+                        <li>ADSP &nbsp;&nbsp;&nbsp; 2023.09.15</li>
+                        <li>SQLD &nbsp;&nbsp;&nbsp; 2025.</li>
+                    </ul>
+                </div>
+                <div class="awards">
+                    <h4>AWARDS</h4>
+                    <ul>
+                        <li>드림미서포터즈 최우수상 부산광역시장상 (개인)</li>
+                        <li>드림미서포터즈 최우수상 (팀)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="skills">
+                <h4>SKILLS</h4>
+                <div class="icons">
+                    <div class="tooltip-box" data-tooltip="Photoshop으로 이미지 보정 및 UI 디자인이 가능합니다.">
+                        <img src="img/photoshop.png" alt="Photoshop">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="Illustrator로 로고 및 아이콘 디자인을 할 수 있습니다.">
+                        <img src="img/illustrator.png" alt="Illustrator">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="HTML5 마크업 구조를 잘 이해하고 작성할 수 있습니다.">
+                        <img src="img/html.png" alt="HTML">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="CSS로 반응형 웹사이트 스타일링이 가능합니다.">
+                        <img src="img/css.png" alt="CSS">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="Visual Studio Code로 효율적인 웹 개발이 가능합니다.">
+                        <img src="img/visual.png" alt="VS Code">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="GitHub를 통한 버전 관리와 협업이 가능합니다.">
+                        <img src="img/github.png" alt="GitHub">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="JavaScript로 웹 페이지에 인터랙션 기능을 추가할 수 있습니다.">
+                        <img src="img/skill-icons_javascript.png" alt="JavaScript">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="PowerPoint로 기획서, 발표자료를 효과적으로 제작할 수 있습니다.">
+                        <img src="img/ppt.png" alt="PowerPoint">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="Excel로 데이터 정리, 분석 및 통계 처리에 능숙합니다.">
+                        <img src="img/exel.png" alt="Excel">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="After Effects로 간단한 모션 그래픽 및 영상 편집이 가능합니다.">
+                        <img src="img/aftereffects.png" alt="After Effects">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="MiriCanvas 제작에 능숙합니다.">
+                        <img src="img/미리캔버스.jpg" alt="미리캔버스">
+                    </div>
+                    <div class="tooltip-box" data-tooltip="MangoBoard 제작에 능숙합니다.">
+                        <img src="img/망고보드.png" alt="미리캔버스">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section-05">
+        <div class="mockup">
+            <div class="image-wrapper">
+                <img src="img/polo.png" alt="Long Scrolling Image">
+            </div>
+            <div class="screen-text">
+                <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+            </div>
+        </div>
+        <div class="details">
+            <h2>WEB 01</h2>
+            <p>POLO</p>
+            <span>의류 브랜드 폴로 홈페이지를 리디자인하여 WEB페이지로 제작했습니다.</span>
+            <ul>
+                <li><strong>사용 언어:</strong> HTML, CSS</li>
+                <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+                <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+                <li><strong>제작 페이지:</strong> MAIN</li>
+            </ul>
+            <div class="action-container">
+                <div class="buttons">
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                </div>
+                <div class="qr-code">
+                    <img src="img/QR Code.png" alt="QR Code">
+                </div>
+            </div>
+        </div>
+        <div class="cat-prints">
+            <img src="img/paw.png" alt="Cat Print" class="paw paw1">
+            <img src="img/paw.png" alt="Cat Print" class="paw paw2">
+            <img src="img/paw.png" alt="Cat Print" class="paw paw3">
+            <img src="img/paw.png" alt="Cat Print" class="paw paw4">
+        </div>
+    </div>
+
+
+
+
+    <div class="section-05">
+        <div class="mockup">
+            <div class="image-wrapper">
+                <img src="img/매트로시티.png" alt="Long Scrolling Image">
+            </div>
+            <div class="screen-text">
+                <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+            </div>
+        </div>
+        <div class="details">
+            <h2>WEB 02</h2>
+            <p>METROCITY</p>
+            <span>의류 브랜드 폴로 홈페이지를 리디자인하여 WEB페이지로 제작했습니다.</span>
+            <ul>
+                <li><strong>사용 언어:</strong> HTML, CSS</li>
+                <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+                <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+                <li><strong>제작 페이지:</strong> MAIN</li>
+            </ul>
+            <div class="action-container">
+                <div class="buttons">
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                </div>
+                <div class="qr-code">
+                    <img src="img/QR Code.png" alt="QR Code">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-05">
+        <div class="mockup">
+            <div class="image-wrapper">
+                <img src="img/조선미녀.png" alt="Long Scrolling Image">
+            </div>
+            <div class="screen-text">
+                <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+            </div>
+        </div>
+        <div class="details">
+            <h2>WEB 03</h2>
+            <p>조선미녀</p>
+            <span>의류 브랜드 폴로 홈페이지를 리디자인하여 WEB페이지로 제작했습니다.</span>
+            <ul>
+                <li><strong>사용 언어:</strong> HTML, CSS</li>
+                <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+                <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+                <li><strong>제작 페이지:</strong> MAIN</li>
+            </ul>
+            <div class="action-container">
+                <div class="buttons">
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                </div>
+                <div class="qr-code">
+                    <img src="img/QR Code.png" alt="QR Code">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-05">
+        <div class="mockup">
+            <div class="image-wrapper">
+                <img src="img/더블유컨셉.png" alt="Long Scrolling Image">
+            </div>
+            <div class="screen-text">
+                <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+            </div>
+        </div>
+        <div class="details">
+            <h2>WEB 04</h2>
+            <p>W Korea</p>
+            <span>의류 브랜드 폴로 홈페이지를 리디자인하여 WEB페이지로 제작했습니다.</span>
+            <ul>
+                <li><strong>사용 언어:</strong> HTML, CSS</li>
+                <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+                <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+                <li><strong>제작 페이지:</strong> MAIN</li>
+            </ul>
+            <div class="action-container">
+                <div class="buttons">
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                </div>
+                <div class="qr-code">
+                    <img src="img/QR Code.png" alt="QR Code">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-06">
+        <div class="mockup">
+            <div class="image-wrapper">
+                <img src="img/이니스프리.png" alt="Long Scrolling Image">
+            </div>
+            <div class="screen-text">
+                <p>스<br />크<br />린<br />에<br /> 마<br />우<br />스<br />를<br /> 대<br />면<br /> 화<br />면<br />이<br />
+                    움<br />직<br />입<br />니<br />다.</p>
+            </div>
+        </div>
+        <div class="details">
+            <h2>WEB 05</h2>
+            <p>INNISFREE</p>
+            <span>의류 브랜드 폴로 홈페이지를 리디자인하여 WEB페이지로 제작했습니다.</span>
+            <ul>
+                <li><strong>사용 언어:</strong> HTML, CSS</li>
+                <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+                <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+                <li><strong>제작 페이지:</strong> MAIN</li>
+            </ul>
+            <div class="action-container">
+                <div class="buttons">
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                    <button class="process-btn">
+                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                        <p class="btn-text">PROCESS</p>
+                    </button>
+                </div>
+                <div class="qr-code">
+                    <img src="img/QR Code.png" alt="QR Code">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="section-07">
+        <p>GRAPHIC DESIGN</p>
+    </div>
+
+    <section class="mwg_effect000">
+        <div class="side-images left">
+            <img src="img/낙서 강아지 고양이.jpg" alt="Left Image 1">
+        </div>
+
+        <div class="medias">
+            <div class="media"><img src="img/리본 실버.jpg" alt="1"></div>
+            <div class="media"><img src="img/토마토.png" alt="2"></div>
+            <div class="media"><img src="img/꽃.jpg" alt="3"></div>
+            <div class="media"><img src="img/하트 빨강.jpg" alt="4"></div>
+            <div class="media"><img src="img/사과.jpg" alt="5"></div>
+            <div class="media"><img src="img/하트 투명.png" alt="6"></div>
+            <div class="media"><img src="img/딸기.jpg" alt="7"></div>
+            <div class="media"><img src="img/단추.jpg" alt="8"></div>
+            <div class="media"><img src="img/구름.jpg" alt="9"></div>
+            <div class="media"><img src="img/노란꽃.jpg" alt="10"></div>
+            <div class="media"><img src="img/피자.jpg" alt="11"></div>
+            <div class="media"><img src="img/파란색 주스.jpg" alt="12"></div>
+            <div class="media"><img src="img/씨디3.jpg" alt="13"></div>
+            <div class="media"><img src="img/분홍꽃.jpg" alt="14"></div>
+            <div class="media"><img src="img/단추 분홍.png" alt="15"></div>
+            <div class="media"><img src="img/하트 주황.jpg" alt="16"></div>
+        </div>
+
+        <div class="side-images right">
+            <img src="img/낙서 고양이.jpg" alt="Right Image 1">
+        </div>
+    </section>
+
+    <div class="section-09">
+        <p>PHOTOSHOP</p>
+
+        <div class="swiper mySwiper2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>photoshop</h2>
+                    <span>소요시간 : 분</span>
+
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>photoshop</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>photoshop</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>photoshop</h2>
+                    <span>소요시간 : 분</span>
+                </div>
+
+
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>photoshop</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>photoshop</h2>
+                    <span>소요시간 : 분</span>
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>photoshop</h2>
+                    <span>소요시간 : 분</span>
+                </div><!-- swiper wrapper end -->
+            </div>
+
+
+            <!-- 페이지네이션 바 -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div><!-- section09 end -->
+
+
+    <div class="section-09">
+        <p>ILLUSTRATOR</p>
+
+        <div class="swiper mySwiper2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>illustrator</h2>
+                    <span>소요시간 : 분</span>
+
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>illustrator</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>illustrator</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>illustrator</h2>
+                    <span>소요시간 : 분</span>
+                </div>
+
+
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>illustrator</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>illustrator</h2>
+                    <span>소요시간 : 분</span>
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>illustrator</h2>
+                    <span>소요시간 : 분</span>
+                </div><!-- swiper wrapper end -->
+            </div>
+
+
+            <!-- 페이지네이션 바 -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div><!-- section09 end -->
+
+
+    <div class="section-09">
+        <p>EASY TOOLS</p>
+
+        <div class="swiper mySwiper2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>miricanvas</h2>
+                    <span>소요시간 : 분</span>
+
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>miricanvas</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>miricanvas</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>miricanvas</h2>
+                    <span>소요시간 : 분</span>
+                </div>
+
+
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>mangoboard</h2>
+                    <span>소요시간 : 분</span>
+
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>mangoboard</h2>
+                    <span>소요시간 : 분</span>
+                </div>
+
+                <div class="swiper-slide"><img src="img/포스터 예시.jpg" alt="">
+                    <h2>mangoboard</h2>
+                    <span>소요시간 : 분</span>
+                </div><!-- swiper wrapper end -->
+            </div>
+
+
+            <!-- 페이지네이션 바 -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div><!-- section09 end -->
+
+
+
+    <div class="section-10">
+        <div class="text-scramble__content">
+            <p id="scramble-text-original">Thank You For Watching! 🖤</p>
+
+            <p class="text-scramble__text" aria-hidden="true">
+                <span id="scramble-text-1"></span>
+                <span id="scramble-text-2"> </span>
+                <span id="scramble-text-3"></span>
+                <span id="scramble-text-4"></span>
+                <img id="scramble-cursor" src="img/마지막고양이.png" alt="" />
+            </p>
+        </div>
+    </div>
+
+
+    <div class="section-11">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Contact me!</h2>
+                <div class="qr-code">
+                    <img src="img/QR Code.png" alt="QR Code">
+                </div>
+                <p>📞010.4766.5224</p>
+                <p>✉ ggp09222@kakao.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-12">
+        <p class="site-info">
+            ※ 본 사이트는 상업적 목적이 아닌 개인 포트폴리오 사이트로 제작되었습니다.<br>
+            일부 내용 및 폰트, 이미지 등은 그 출처가 따로 있음을 밝힙니다.
+        </p>
+        <p class="copyright">
+            COPYRIGHT © 2025. kimjisoo All Right Reserved.
+        </p>
+    </div>
+
+
+
+</body>
+
+</html>

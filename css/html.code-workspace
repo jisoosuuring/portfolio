@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "../../html"
+		},
+		{
+			"path": "../../더블유컨셉"
+		},
+		{
+			"path": "../../풀페이지"
+		},
+		{
+			"path": "../../gsap"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../리액트"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "김지수_포트폴리오"
+	}
+}
