@@ -422,6 +422,7 @@ body {
     margin-bottom: 30px;
 }
 
+
 .section-05 .details ul {
     list-style: none;
     padding: 0;
@@ -937,7 +938,13 @@ body {
 }
 
 
-
+.section-09 p:nth-of-type(2) {
+    font-size: 16px;
+    font-weight: normal;
+    color: #666;
+    text-align: center;
+    margin-bottom: 50px;
+}
 
 .section-09 .image-container-02 {
     display: inline-block;
@@ -959,7 +966,7 @@ body {
 
 .section-09 p {
     font-family: 'Anton';
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 
@@ -1022,7 +1029,7 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    
+
 }
 
 .text-scramble__text span {

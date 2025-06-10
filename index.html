@@ -80,22 +80,17 @@
 <script src="lib/ScrambleTextPlugin.min.js"></script>
 <script>
     window.onload = () => {
-        // Register GSAP plugins
         gsap.registerPlugin(SplitText, InertiaPlugin);
 
-        // Wait for fonts to load
         document.fonts.ready.then(() => {
-            // Set initial styles for animated title
             gsap.set("h2", { opacity: 1 });
 
-            // Split text for animation
             const headlineSplit = SplitText.create(".animated-title", {
                 type: "words",
                 wordsClass: "word++",
                 ignore: "sup"
             });
 
-            // Animate headline
             gsap.from(headlineSplit.words, {
                 y: -100,
                 opacity: 0,
@@ -106,67 +101,47 @@
             });
         });
 
-
-        // Variables for tracking mouse position
         let oldX = 0, oldY = 0, deltaX = 0, deltaY = 0;
 
         const root = document.querySelector('.mwg_effect000');
 
-        if (!root) {
-            console.warn("Element with class '.mwg_effect000' not found.");
-            return;
-        }
-
-        // Track mouse movements
-        root.addEventListener("mousemove", (e) => {
-            deltaX = e.clientX - oldX;
-            deltaY = e.clientY - oldY;
-            oldX = e.clientX;
-            oldY = e.clientY;
-        });
-
-        // Animate each media element
-        root.querySelectorAll('.media').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                const tl = gsap.timeline({
-                    onComplete: () => tl.kill() // Clean up after animation
-                });
-
-                tl.timeScale(1.2); // Speed up animation slightly
-
-                const image = el.querySelector('img');
-                if (!image) {
-                    console.warn("No image found inside .media element.");
-                    return;
-                }
-
-                // Animate inertia
-                tl.to(image, {
-                    inertia: {
-                        x: {
-                            velocity: deltaX * 30,
-                            end: 0
-                        },
-                        y: {
-                            velocity: deltaY * 30,
-                            end: 0
-                        },
-                    },
-                    duration: 1
-                });
-
-                // Add rotation effect
-                tl.fromTo(image, {
-                    rotate: 0
-                }, {
-                    duration: 0.4,
-                    rotate: (Math.random() - 0.5) * 30,
-                    yoyo: true,
-                    repeat: 1,
-                    ease: 'power1.inOut'
-                }, '<');
+        if (root) {
+            root.addEventListener("mousemove", (e) => {
+                deltaX = e.clientX - oldX;
+                deltaY = e.clientY - oldY;
+                oldX = e.clientX;
+                oldY = e.clientY;
             });
-        });
+
+            root.querySelectorAll('.media').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    const tl = gsap.timeline({
+                        onComplete: () => tl.kill()
+                    });
+
+                    tl.timeScale(1.2);
+
+                    const image = el.querySelector('img');
+                    if (image) {
+                        tl.to(image, {
+                            inertia: {
+                                x: { velocity: deltaX * 30, end: 0 },
+                                y: { velocity: deltaY * 30, end: 0 },
+                            },
+                            duration: 1
+                        });
+
+                        tl.fromTo(image, { rotate: 0 }, {
+                            duration: 0.4,
+                            rotate: (Math.random() - 0.5) * 30,
+                            yoyo: true,
+                            repeat: 1,
+                            ease: 'power1.inOut'
+                        }, '<');
+                    }
+                });
+            });
+        }
 
         window.onscroll = function () {
             const topButton = document.getElementById("topButton");
@@ -177,83 +152,68 @@
             }
         };
 
-        // 페이지 맨 위로 스크롤하는 함수
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
-
         var swiper = new Swiper(".mySwiper2", {
-            slidesPerView: 4,                 // 한 화면에 4개씩 보이게 설정
-            spaceBetween: 30,                 // 슬라이드 간격 30px              
+            slidesPerView: 4,
+            spaceBetween: 30,
             pagination: {
                 el: ".swiper-pagination",
-                type: "progressbar",           // 바 형태로 변경
+                type: "progressbar",
                 clickable: true,
             }
-
         });
 
-
-        const tl = gsap.timeline({
-            id: "text-scramble",
-            defaults: { ease: "none" }
-        });
-
+        const tl = gsap.timeline({ id: "text-scramble", defaults: { ease: "none" } });
         const cursorTl = gsap.timeline({ repeat: -1 });
 
-        gsap.set("#scramble-text-original", {
-            opacity: 0
+        gsap.set("#scramble-text-original", { opacity: 0 });
+
+        cursorTl.to("#scramble-cursor", {
+            opacity: 0,
+            duration: 0.5,
+            ease: "none",
+            delay: 0.2
+        }).to("#scramble-cursor", {
+            opacity: 1,
+            duration: 0.5,
+            ease: "none",
+            delay: 0.2
         });
 
-        cursorTl
-            .to("#scramble-cursor", {
-                opacity: 0,
-                duration: 0.5,
-                ease: "none",
-                delay: 0.2
-            })
-            .to("#scramble-cursor", {
-                opacity: 1,
-                duration: 0.5,
-                ease: "none",
-                delay: 0.2
-            });
-
         tl.to("#scramble-text-1", {
-            scrambleText: {
-                text: "아직 스크롤 중이신가요?",
-                chars: "Still here?"
-            },
+            scrambleText: { text: "아직 스크롤 중이신가요?", chars: "Still here?" },
             duration: 2
-        })
-            .to("#scramble-text-2", {
-                scrambleText: {
-                    text: "그럼, 인연입니다. ",
-                    chars: "Maybe that means",
-                    speed: 0.4
-                },
-                duration: 2
-            })
-            .to("#scramble-text-3", {
-                scrambleText: { text: "멋진 프로젝트로 이어지길 바랍니다.", chars: "to create something", speed: 0.3 },
-                scrambleText: { text: " 우연히 시작된 스크롤이 멋진 프로젝트로 이어지길 바랍니다.", chars: "we’re meant " },
-                duration: 2
-            })
-            .to("#scramble-text-4", {
-                scrambleText: { text: "Thank You For Watching🖤", chars: "together", speed: 0.3 },
-                duration: 1
-            })
+        }).to("#scramble-text-2", {
+            scrambleText: { text: "그럼, 인연입니다.", chars: "Maybe that means", speed: 0.4 },
+            duration: 2
+        }).to("#scramble-text-3", {
+            scrambleText: { text: "멋진 프로젝트로 이어지길 바랍니다.", chars: "to create something", speed: 0.3 },
+            duration: 2
+        }).to("#scramble-text-4", {
+            scrambleText: { text: "Thank You For Watching🖤", chars: "together", speed: 0.3 },
+            duration: 1
+        }).add(cursorTl);
 
-            .add(cursorTl);
+        window.onclick = () => tl.play(0);
 
-        window.onclick = () => tl.play(0); // click to replay
-
-
-
-
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 100;
+                    const targetPosition = targetElement.offsetTop - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
     };
 </script>
+
 
 
 <header class="header">
@@ -263,11 +223,11 @@
         </h1> <!-- logo end -->
         <nav class="nav">
             <ul>
-                <li><a href="#">MAIN</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">PROJECT</a></li>
-                <li><a href="#">GRAPHIC DESIGN</a></li>
-                <li><a href="#">CONTACT</a></li>
+                <li><a href="#section-01">MAIN</a></li>
+                <li><a href="#section-02">ABOUT</a></li>
+                <li><a href="#section-05">PROJECT</a></li>
+                <li><a href="#section-07">GRAPHIC DESIGN</a></li>
+                <li><a href="#section-11">CONTACT</a></li>
             </ul>
         </nav><!-- nav end -->
     </div> <!-- inner end -->
@@ -275,7 +235,7 @@
 
 
 
-<div class="section-01">
+<div class="section-01" id="section-01">
     <div class="text">
         <h2 class="animated-title">VERSATILE</h2>
     </div>
@@ -297,7 +257,7 @@
 
 
 
-<div class="section-02">
+<div class="section-02" id="section-02">
     <h2>
         "데이터로 니즈를 읽고, 디자인으로 마음을 움직입니다."
     </h2>
@@ -324,7 +284,7 @@
 
 
 
-<div class="section-03">
+<div class="section-03" id="section-03">
 
     <div class="profile-left">
         <div class="photo">
@@ -425,7 +385,7 @@
     </div>
 </div>
 
-<div class="section-05">
+<div class="section-05" id="section-05">
     <div class="mockup">
         <div class="image-wrapper">
             <img src="img/polo.png" alt="Long Scrolling Image">
@@ -470,6 +430,48 @@
 
 
 
+<div class="section-05" id="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/polo.png" alt="Long Scrolling Image">
+        </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 01</h2>
+        <p>POLO</p>
+        <span>의류 브랜드 폴로 홈페이지를 리디자인하여 WEB 전용 페이지로 제작했습니다.</span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS</li>
+            <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+            <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <a href="https://example.com/process-polo" target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Process</p>
+                </a>
+                <a href="https://example.com/goweb-polo" target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </a>
+            </div>
+            <div class="qr-code">
+                <img src="img/폴로큐알.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+    <div class="cat-prints">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw1">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw2">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw3">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw4">
+    </div>
+</div>
 
 <div class="section-05">
     <div class="mockup">
@@ -492,14 +494,14 @@
         </ul>
         <div class="action-container">
             <div class="buttons">
-                <button class="process-btn">
+                <a href="https://example.com/process-metrocity" target="_blank" class="process-btn">
                     <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
                     <p class="btn-text">Process</p>
-                </button>
-                <button class="process-btn">
+                </a>
+                <a href="https://example.com/goweb-metrocity" target="_blank" class="process-btn">
                     <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
                     <p class="btn-text">Go Web</p>
-                </button>
+                </a>
             </div>
             <div class="qr-code">
                 <img src="img/매트로시티 큐알.png" alt="QR Code">
@@ -529,14 +531,14 @@
         </ul>
         <div class="action-container">
             <div class="buttons">
-                <button class="process-btn">
+                <a href="https://example.com/process-josun" target="_blank" class="process-btn">
                     <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
                     <p class="btn-text">Process</p>
-                </button>
-                <button class="process-btn">
+                </a>
+                <a href="https://example.com/goweb-josun" target="_blank" class="process-btn">
                     <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
                     <p class="btn-text">Go Web</p>
-                </button>
+                </a>
             </div>
             <div class="qr-code">
                 <img src="img/조선미녀큐알.png" alt="QR Code">
@@ -566,14 +568,14 @@
         </ul>
         <div class="action-container">
             <div class="buttons">
-                <button class="process-btn">
+                <a href="https://example.com/process-wkorea" target="_blank" class="process-btn">
                     <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
                     <p class="btn-text">Process</p>
-                </button>
-                <button class="process-btn">
+                </a>
+                <a href="https://example.com/goweb-wkorea" target="_blank" class="process-btn">
                     <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
                     <p class="btn-text">Go Web</p>
-                </button>
+                </a>
             </div>
             <div class="qr-code">
                 <img src="img/더블유코리아큐알.png" alt="QR Code">
@@ -582,7 +584,8 @@
     </div>
 </div>
 
-<div class="section-06">
+
+<div class="section-06" id="section-06">
     <div class="mockup">
         <div class="image-wrapper">
             <img src="img/이니스프리.png" alt="Long Scrolling Image">
@@ -604,14 +607,14 @@
         </ul>
         <div class="action-container">
             <div class="buttons">
-                <button class="process-btn">
+                <a href="https://example.com/process-innisfree" target="_blank" class="process-btn">
                     <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
                     <p class="btn-text">Process</p>
-                </button>
-                <button class="process-btn">
+                </a>
+                <a href="https://example.com/figma-innisfree" target="_blank" class="process-btn">
                     <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
                     <p class="btn-text">Figma</p>
-                </button>
+                </a>
             </div>
             <div class="qr-code">
                 <img src="img/이니스프리디자인큐알.png" alt="QR Code">
@@ -623,7 +626,8 @@
 
 
 
-<div class="section-07">
+
+<div class="section-07" id="section-07">
     <p>GRAPHIC DESIGN</p>
 </div>
 
@@ -655,9 +659,9 @@
         <img src="img/낙서 고양이.jpg" alt="Right Image 1">
     </div>
 </section>
-
-<div class="section-09">
+<div class="section-09" id="section-09">
     <p>PHOTOSHOP</p>
+    <p>각 이미지에 마우스 호버 시 관련된 설명이 나옵니다.</p>
 
     <div class="swiper mySwiper2">
         <div class="swiper-wrapper">
@@ -670,8 +674,7 @@
                         </div>
                     </div>
                 </div>
-                <h2>photoshop</h2>
-                <span>소요시간 : 분</span>
+                <h2>소요시간 : 분</h2>
             </div>
 
             <div class="swiper-slide">
@@ -683,253 +686,275 @@
                         </div>
                     </div>
                 </div>
-                <h2>photoshop</h2>
-                <span>소요시간 : 분</span>
-            </div>
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>New Text Appears Here</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>photoshop</h2>
-                <span>소요시간 : 분</span>
-            </div>
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>New Text Appears Here</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>photoshop</h2>
-                <span>소요시간 : 분</span>
-            </div>
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>New Text Appears Here</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>photoshop</h2>
-                <span>소요시간 : 분</span>
-            </div>
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>New Text Appears Here</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>photoshop</h2>
-                <span>소요시간 : 분</span>
-            </div>
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>New Text Appears Here</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>photoshop</h2>
-                <span>소요시간 : 분</span>
+                <h2>소요시간 : 분</h2>
             </div>
 
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>소요시간 : 분</h2>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>소요시간 : 분</h2>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>소요시간 : 분</h2>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>소요시간 : 분</h2>
+            </div>
         </div>
+
+
+
+        <div class="section-09">
+            <p>ILLUSTRATOR</p>
+            <p>각 이미지에 마우스 호버 시 관련된 설명이 나옵니다.</p>
+
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>Illustrator 작업의 특별함</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>Illustrator 작업의 특별함</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>Illustrator 작업의 특별함</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>Illustrator 작업의 특별함</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>Illustrator 작업의 특별함</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>Illustrator 작업의 특별함</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>Illustrator 작업의 특별함</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <div class="section-09">
+            <p>EASY TOOLS</p>
+            <p>각 이미지에 마우스 호버 시 관련된 설명이 나옵니다.</p>
+
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>미리캔버스 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>망고보드 사용의 장점</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 분</h2>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
 
         <!-- 페이지네이션 바 -->
         <div class="swiper-pagination"></div>
     </div>
-</div>
-
-
-
-<div class="section-09">
-    <p>ILLUSTRATOR</p>
-
-    <div class="swiper mySwiper2">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>Illustrator 작업의 특별함</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>illustrator</h2>
-                <span>소요시간 : 분</span>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>Illustrator 작업의 특별함</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>illustrator</h2>
-                <span>소요시간 : 분</span>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>Illustrator 작업의 특별함</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>illustrator</h2>
-                <span>소요시간 : 분</span>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>Illustrator 작업의 특별함</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>illustrator</h2>
-                <span>소요시간 : 분</span>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="image-container">
-                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                    <div class="hover-overlay">
-                        <div class="hover-text">
-                            <p>Illustrator 작업의 특별함</p>
-                        </div>
-                    </div>
-                </div>
-                <h2>illustrator</h2>
-                <span>소요시간 : 분</span>
-            </div>
-
-
-            <!-- 페이지네이션 바 -->
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-
-
-    <div class="section-09">
-        <p>EASY TOOLS</p>
-
-        <div class="swiper mySwiper2">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>미리캔버스 사용의 장점</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>miricanvas</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>망고보드 사용의 장점</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>mangoboard</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>망고보드 사용의 장점</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>mangoboard</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>망고보드 사용의 장점</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>mangoboard</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>망고보드 사용의 장점</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>mangoboard</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>망고보드 사용의 장점</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>mangoboard</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>망고보드 사용의 장점</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>mangoboard</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-            </div>
-
-            <!-- 페이지네이션 바 -->
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-
 </div>
 
 
@@ -948,7 +973,7 @@
 </div>
 
 
-<div class="section-11">
+<div class="section-11" id="section-11">
     <div class="contact-wrapper">
         <div class="contact-info">
             <h2>Contact me!</h2>
@@ -957,6 +982,7 @@
             </div>
             <p>📞010.4766.5224</p>
             <p>✉ ggp09222@kakao.com</p>
+            <p>✨포트폴리오는 지속적으로 업데이트 될 예정입니다✨</p>
         </div>
     </div>
 </div>
