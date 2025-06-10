@@ -64,12 +64,13 @@
         font-style: normal;
     }
 
+
     @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
+        font-family: 'Pretendard-Regular';
+        src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -240,7 +241,7 @@
                 duration: 2
             })
             .to("#scramble-text-4", {
-                scrambleText: { text: "Thank You For Watching", chars: "together", speed: 0.3 },
+                scrambleText: { text: "Thank You For Watching🖤", chars: "together", speed: 0.3 },
                 duration: 1
             })
 
@@ -255,490 +256,576 @@
 </script>
 
 
-    <header class="header">
-        <div class="inner">
-            <h1 class="logo">
-                <a href="#"><img src="img/로고용 고양이.png" alt=""></a>
-            </h1> <!-- logo end -->
-            <nav class="nav">
+<header class="header">
+    <div class="inner">
+        <h1 class="logo">
+            <a href="#"><img src="img/로고용 고양이.png" alt=""></a>
+        </h1> <!-- logo end -->
+        <nav class="nav">
+            <ul>
+                <li><a href="#">MAIN</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">PROJECT</a></li>
+                <li><a href="#">GRAPHIC DESIGN</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </nav><!-- nav end -->
+    </div> <!-- inner end -->
+</header>
+
+
+
+<div class="section-01">
+    <div class="text">
+        <h2 class="animated-title">VERSATILE</h2>
+    </div>
+    <div class="image">
+        <img src="img/고양이.gif" alt="">
+    </div>
+    <div class="scroll">
+        <img src="img/down.png" alt="">
+        <p>scroll</p>
+    </div>
+
+</div> <!-- section-01 end -->
+
+<a href="#top" onclick="scrollToTop(); return false;">
+    <button id="topButton">
+        <img src="img/top버튼.png" alt="Top 버튼" style="width: 80px; height: 80px;">
+    </button>
+</a>
+
+
+
+<div class="section-02">
+    <h2>
+        "데이터로 니즈를 읽고, 디자인으로 마음을 움직입니다."
+    </h2>
+
+
+    <p>
+        <br />
+        안녕하세요. 기능과 감성을 아우르는 다재다능한 디자이너, 김지수입니다.<br />
+
+        저는 경영정보학을 전공하며 ADsP, SQLD 자격증과 Tableau 시각화 도구를 집중적으로 학습해왔습니다.<br />
+        이 과정에서 데이터 분석의 힘을 체감했고,<br />
+        사용자 중심의 웹사이트 디자인에도 분석적 사고가 필수적이라는 것을 깨달았습니다.<br />
+        <br />
+        단순히 예쁜 화면을 만드는 것이 아닌, 사용자의 행동 데이터를 이해하고, 그 니즈에 설득력 있게 대응하는 디자인을 추구합니다.<br />
+        마케팅의 관점에서 사용자 여정을 설계하고, 그 안에 감성을 담아내는 것이 제 강점입니다.<br />
+        <br />
+        저는 늘 묻습니다.<br />
+        “왜 이 디자인이 필요한가?”<br />
+        “이 요소가 사용자에게 어떤 경험을 줄 수 있을까?”<br />
+        <br />
+        데이터 기반의 통찰과 감성적 표현력을 바탕으로, 사용자와 브랜드 사이의 접점을 가장 효과적으로 설계하는 디자이너가 되겠습니다.
+    </p>
+</div>
+
+
+
+<div class="section-03">
+
+    <div class="profile-left">
+        <div class="photo">
+            <img src="img/증사.jpg" alt="증명사진">
+        </div>
+        <div class="info">
+            <h3>
+                <span class="name-ko">김지수</span>
+                <span class="name-en">KIM JI SOO</span>
+            </h3>
+            <p>2002.03.07</p>
+            <p><strong>P</strong> 010-4766-5224</p>
+            <p><strong>B</strong> ggp09222@kakao.com</p>
+        </div>
+    </div>
+
+    <div class="profile-right">
+        <div class="career">
+            <h4>CAREER</h4>
+            <ul>
+                <li>동아대학교 장학생 대표 다우이스트</li>
+                <li>남산장사회복지관 SNS 서포터즈 2기</li>
+                <li>동아대학교 경영정보학과 학생회 IT 정보부장</li>
+                <li>부산광역시 경제 진흥원 조찬 드림미 서포터즈</li>
+                <li>부산시립시민도서관 평생학습과 인턴</li>
+            </ul>
+        </div>
+
+        <div class="cert-award">
+            <div class="certificate">
+                <h4>CERTIFICATE & LICENSE</h4>
                 <ul>
-                    <li><a href="#">MAIN</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">PROJECT</a></li>
-                    <li><a href="#">GRAPHIC DESIGN</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    <li>GTQ 1급 &nbsp;&nbsp;&nbsp; 2025.05.16</li>
+                    <li>컴퓨터 활용 능력 2급 &nbsp;&nbsp;&nbsp; 2025.01.28</li>
+                    <li>ADSP &nbsp;&nbsp;&nbsp; 2023.09.15</li>
+                    <li>SQLD &nbsp;&nbsp;&nbsp; 2025.</li>
                 </ul>
-            </nav><!-- nav end -->
-        </div> <!-- inner end -->
-    </header>
-
-
-
-    <div class="section-01">
-        <div class="text">
-            <h2 class="animated-title">VERSATILE</h2>
-        </div>
-        <div class="image">
-            <img src="img/고양이.gif" alt="">
-        </div>
-        <div class="scroll">
-            <img src="img/down.png" alt="">
-            <p>scroll</p>
-        </div>
-
-    </div> <!-- section-01 end -->
-
-    <a href="#top" onclick="scrollToTop(); return false;">
-        <button id="topButton">
-            <img src="img/top버튼.png" alt="Top 버튼" style="width: 80px; height: 80px;">
-        </button>
-    </a>
-
-
-
-    <div class="section-02">
-        <h2>
-            "데이터로 니즈를 읽고, 디자인으로 마음을 움직입니다."
-        </h2>
-
-
-        <p>
-            <br />
-            안녕하세요. 기능과 감성을 아우르는 다재다능한 디자이너, 김지수입니다.<br />
-
-            저는 경영정보학을 전공하며 ADsP, SQLD 자격증과 Tableau 시각화 도구를 집중적으로 학습해왔습니다.<br />
-            이 과정에서 데이터 분석의 힘을 체감했고,<br />
-            사용자 중심의 웹사이트 디자인에도 분석적 사고가 필수적이라는 것을 깨달았습니다.<br />
-            <br />
-            단순히 예쁜 화면을 만드는 것이 아닌, 사용자의 행동 데이터를 이해하고, 그 니즈에 설득력 있게 대응하는 디자인을 추구합니다.<br />
-            마케팅의 관점에서 사용자 여정을 설계하고, 그 안에 감성을 담아내는 것이 제 강점입니다.<br />
-            <br />
-            저는 늘 묻습니다.<br />
-            “왜 이 디자인이 필요한가?”<br />
-            “이 요소가 사용자에게 어떤 경험을 줄 수 있을까?”<br />
-            <br />
-            데이터 기반의 통찰과 감성적 표현력을 바탕으로, 사용자와 브랜드 사이의 접점을 가장 효과적으로 설계하는 디자이너가 되겠습니다.
-        </p>
-    </div>
-
-
-
-    <div class="section-03">
-
-        <div class="profile-left">
-            <div class="photo">
-                <img src="img/증사.jpg" alt="증명사진">
             </div>
-            <div class="info">
-                <h3>
-                    <span class="name-ko">김지수</span>
-                    <span class="name-en">KIM JI SOO</span>
-                </h3>
-                <p>2002.03.07</p>
-                <p><strong>P</strong> 010-4766-5224</p>
-                <p><strong>B</strong> ggp09222@kakao.com</p>
-            </div>
-        </div>
-
-        <div class="profile-right">
-            <div class="career">
-                <h4>CAREER</h4>
+            <div class="awards">
+                <h4>AWARDS</h4>
                 <ul>
-                    <li>동아대학교 장학생 대표 다우이스트</li>
-                    <li>남산장사회복지관 SNS 서포터즈 2기</li>
-                    <li>동아대학교 경영정보학과 학생회 IT 정보부장</li>
-                    <li>부산광역시 경제 진흥원 조찬 드림미 서포터즈</li>
-                    <li>부산시립시민도서관 평생학습과 인턴</li>
+                    <li>드림미서포터즈 최우수상 부산광역시장상 (개인)</li>
+                    <li>드림미서포터즈 최우수상 (팀)</li>
                 </ul>
             </div>
+        </div>
 
-            <div class="cert-award">
-                <div class="certificate">
-                    <h4>CERTIFICATE & LICENSE</h4>
-                    <ul>
-                        <li>GTQ 1급 &nbsp;&nbsp;&nbsp; 2025.05.16</li>
-                        <li>컴퓨터 활용 능력 2급 &nbsp;&nbsp;&nbsp; 2025.01.28</li>
-                        <li>ADSP &nbsp;&nbsp;&nbsp; 2023.09.15</li>
-                        <li>SQLD &nbsp;&nbsp;&nbsp; 2025.</li>
-                    </ul>
+        <div class="skills">
+            <h4>SKILLS</h4>
+            <div class="icons">
+                <div class="tooltip-box" data-tooltip="Photoshop으로 이미지 보정 및 UI 디자인이 가능합니다.">
+                    <img src="img/photoshop.png" alt="Photoshop">
                 </div>
-                <div class="awards">
-                    <h4>AWARDS</h4>
-                    <ul>
-                        <li>드림미서포터즈 최우수상 부산광역시장상 (개인)</li>
-                        <li>드림미서포터즈 최우수상 (팀)</li>
-                    </ul>
+                <div class="tooltip-box" data-tooltip="Illustrator로 로고 및 아이콘 디자인을 할 수 있습니다.">
+                    <img src="img/illustrator.png" alt="Illustrator">
                 </div>
-            </div>
+                <div class="tooltip-box" data-tooltip="After Effects로 간단한 모션 그래픽 및 영상 편집이 가능합니다.">
+                    <img src="img/aftereffects.png" alt="After Effects">
+                </div>
+                <div class="tooltip-box" data-tooltip="HTML5 마크업 구조를 잘 이해하고 작성할 수 있습니다.">
+                    <img src="img/html.png" alt="HTML">
+                </div>
+                <div class="tooltip-box" data-tooltip="CSS로 반응형 웹사이트 스타일링이 가능합니다.">
+                    <img src="img/css.png" alt="CSS">
+                </div>
+                <div class="tooltip-box" data-tooltip="JavaScript로 웹 페이지에 인터랙션 기능을 추가할 수 있습니다.">
+                    <img src="img/skill-icons_javascript.png" alt="JavaScript">
+                </div>
+                <div class="tooltip-box" data-tooltip="간단한 DOM 조작과 애니메이션을 구현할 수 있습니다.">
+                    <img src="img/jquery.png" alt="JavaScript">
+                </div>
+                <div class="tooltip-box" data-tooltip="Visual Studio Code로 효율적인 웹 개발이 가능합니다.">
+                    <img src="img/visual.png" alt="VS Code">
+                </div>
+                <div class="tooltip-box" data-tooltip="GitHub를 통한 버전 관리와 협업이 가능합니다.">
+                    <img src="img/github.png" alt="GitHub">
+                </div>
+                <div class="tooltip-box" data-tooltip="Git으로 프로젝트의 버전 관리를 체계적으로 할 수 있습니다.">
+                    <img src="img/git.png" alt="GitHub">
+                </div>
 
-            <div class="skills">
-                <h4>SKILLS</h4>
-                <div class="icons">
-                    <div class="tooltip-box" data-tooltip="Photoshop으로 이미지 보정 및 UI 디자인이 가능합니다.">
-                        <img src="img/photoshop.png" alt="Photoshop">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="Illustrator로 로고 및 아이콘 디자인을 할 수 있습니다.">
-                        <img src="img/illustrator.png" alt="Illustrator">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="HTML5 마크업 구조를 잘 이해하고 작성할 수 있습니다.">
-                        <img src="img/html.png" alt="HTML">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="CSS로 반응형 웹사이트 스타일링이 가능합니다.">
-                        <img src="img/css.png" alt="CSS">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="Visual Studio Code로 효율적인 웹 개발이 가능합니다.">
-                        <img src="img/visual.png" alt="VS Code">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="GitHub를 통한 버전 관리와 협업이 가능합니다.">
-                        <img src="img/github.png" alt="GitHub">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="JavaScript로 웹 페이지에 인터랙션 기능을 추가할 수 있습니다.">
-                        <img src="img/skill-icons_javascript.png" alt="JavaScript">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="PowerPoint로 기획서, 발표자료를 효과적으로 제작할 수 있습니다.">
-                        <img src="img/ppt.png" alt="PowerPoint">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="Excel로 데이터 정리, 분석 및 통계 처리에 능숙합니다.">
-                        <img src="img/exel.png" alt="Excel">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="After Effects로 간단한 모션 그래픽 및 영상 편집이 가능합니다.">
-                        <img src="img/aftereffects.png" alt="After Effects">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="MiriCanvas 제작에 능숙합니다.">
-                        <img src="img/미리캔버스.jpg" alt="미리캔버스">
-                    </div>
-                    <div class="tooltip-box" data-tooltip="MangoBoard 제작에 능숙합니다.">
-                        <img src="img/망고보드.png" alt="미리캔버스">
-                    </div>
+                <div class="tooltip-box" data-tooltip="PowerPoint로 기획서, 발표자료를 효과적으로 제작할 수 있습니다.">
+                    <img src="img/ppt.png" alt="PowerPoint">
+                </div>
+                <div class="tooltip-box" data-tooltip="Excel로 데이터 정리, 분석 및 통계 처리에 능숙합니다.">
+                    <img src="img/exel.png" alt="Excel">
+                </div>
+
+                <div class="tooltip-box" data-tooltip="MiriCanvas 제작에 능숙합니다.">
+                    <img src="img/미리캔버스.jpg" alt="미리캔버스">
+                </div>
+                <div class="tooltip-box" data-tooltip="MangoBoard 제작에 능숙합니다.">
+                    <img src="img/망고보드.png" alt="망고보드">
                 </div>
             </div>
+        </div>
 
+    </div>
+</div>
+
+<div class="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/polo.png" alt="Long Scrolling Image">
+        </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
         </div>
     </div>
-
-    <div class="section-05">
-        <div class="mockup">
-            <div class="image-wrapper">
-                <img src="img/polo.png" alt="Long Scrolling Image">
+    <div class="details">
+        <h2>WEB 01</h2>
+        <p>POLO</p>
+        <span>의류 브랜드 폴로 홈페이지를 리디자인하여 WEB 전용 페이지로 제작했습니다.</span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS</li>
+            <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+            <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Process</p>
+                </button>
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </button>
             </div>
-            <div class="screen-text">
-                <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
-            </div>
-        </div>
-        <div class="details">
-            <h2>WEB 01</h2>
-            <p>POLO</p>
-            <span>의류 브랜드 폴로 홈페이지를 리디자인하여 WEB 전용 페이지로 제작했습니다.</span>
-            <ul>
-                <li><strong>사용 언어:</strong> HTML, CSS</li>
-                <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
-                <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
-                <li><strong>제작 페이지:</strong> MAIN</li>
-            </ul>
-            <div class="action-container">
-                <div class="buttons">
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                </div>
-                <div class="qr-code">
-                    <img src="img/폴로큐알.png" alt="QR Code">
-                </div>
-            </div>
-        </div>
-        <div class="cat-prints">
-            <img src="img/paw.png" alt="Cat Print" class="paw paw1">
-            <img src="img/paw.png" alt="Cat Print" class="paw paw2">
-            <img src="img/paw.png" alt="Cat Print" class="paw paw3">
-            <img src="img/paw.png" alt="Cat Print" class="paw paw4">
-        </div>
-    </div>
-
-
-
-
-    <div class="section-05">
-        <div class="mockup">
-            <div class="image-wrapper">
-                <img src="img/매트로시티.png" alt="Long Scrolling Image">
-            </div>
-            <div class="screen-text">
-                <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
-            </div>
-        </div>
-        <div class="details">
-            <h2>WEB 02</h2>
-            <p>METROCITY</p>
-            <span>패션 브랜드 매트로시티 홈페이지를 풀페이지로 리디자인하여 제작했습니다.</span>
-            <ul>
-                <li><strong>사용 언어:</strong> HTML, CSS, JAVA</li>
-                <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
-                <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
-                <li><strong>제작 페이지:</strong> MAIN, SUB PAGE</li>
-            </ul>
-            <div class="action-container">
-                <div class="buttons">
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                </div>
-                <div class="qr-code">
-                    <img src="img/매트로시티 큐알.png" alt="QR Code">
-                </div>
+            <div class="qr-code">
+                <img src="img/폴로큐알.png" alt="QR Code">
             </div>
         </div>
     </div>
+    <div class="cat-prints">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw1">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw2">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw3">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw4">
+    </div>
+</div>
 
-    <div class="section-05">
-        <div class="mockup">
-            <div class="image-wrapper">
-                <img src="img/조선미녀.png" alt="Long Scrolling Image">
-            </div>
-            <div class="screen-text">
-                <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
-            </div>
+
+
+
+<div class="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/매트로시티.png" alt="Long Scrolling Image">
         </div>
-        <div class="details">
-            <h2>WEB 03</h2>
-            <p>조선미녀</p>
-            <span>코스메틱 브랜드 조선미녀 홈페이지를 리디자인하여 반응형 웹 페이지로 제작했습니다.</span>
-            <ul>
-                <li><strong>사용 언어:</strong> HTML, CSS, JAVA</li>
-                <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
-                <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
-                <li><strong>제작 페이지:</strong> MAIN, SUB PAGE</li>
-            </ul>
-            <div class="action-container">
-                <div class="buttons">
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                </div>
-                <div class="qr-code">
-                    <img src="img/조선미녀큐알.png" alt="QR Code">
-                </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 02</h2>
+        <p>METROCITY</p>
+        <span>패션 브랜드 매트로시티 홈페이지를 풀페이지로 리디자인하여 제작했습니다.</span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS, JAVA</li>
+            <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+            <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN, SUB PAGE</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Process</p>
+                </button>
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </button>
+            </div>
+            <div class="qr-code">
+                <img src="img/매트로시티 큐알.png" alt="QR Code">
             </div>
         </div>
     </div>
+</div>
 
-    <div class="section-05">
-        <div class="mockup">
-            <div class="image-wrapper">
-                <img src="img/더블유컨셉.png" alt="Long Scrolling Image">
-            </div>
-            <div class="screen-text">
-                <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
-            </div>
+<div class="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/조선미녀.png" alt="Long Scrolling Image">
         </div>
-        <div class="details">
-            <h2>WEB 04</h2>
-            <p>W Korea</p>
-            <span>패션 브랜드 W KOREA의 디자인을 퍼블리싱했습니다.</span>
-            <ul>
-                <li><strong>사용 언어:</strong> HTML, CSS</li>
-                <li><strong>사용 프로그램:</strong> Visaul Studio Code</li>
-                <li><strong>기여도:</strong> 퍼블리싱 100%</li>
-                <li><strong>제작 페이지:</strong> MAIN</li>
-            </ul>
-            <div class="action-container">
-                <div class="buttons">
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                </div>
-                <div class="qr-code">
-                    <img src="img/더블유코리아큐알.png" alt="QR Code">
-                </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 03</h2>
+        <p>조선미녀</p>
+        <span>코스메틱 브랜드 조선미녀 홈페이지를 리디자인하여 반응형 웹 페이지로 제작했습니다.</span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS, JAVA</li>
+            <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+            <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN, SUB PAGE</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Process</p>
+                </button>
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </button>
+            </div>
+            <div class="qr-code">
+                <img src="img/조선미녀큐알.png" alt="QR Code">
             </div>
         </div>
     </div>
+</div>
 
-    <div class="section-06">
-        <div class="mockup">
-            <div class="image-wrapper">
-                <img src="img/이니스프리.png" alt="Long Scrolling Image">
-            </div>
-            <div class="screen-text">
-                <p>스<br />크<br />린<br />에<br /> 마<br />우<br />스<br />를<br /> 대<br />면<br /> 화<br />면<br />이<br />
-                    움<br />직<br />입<br />니<br />다.</p>
-            </div>
+<div class="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/더블유컨셉.png" alt="Long Scrolling Image">
         </div>
-        <div class="details">
-            <h2>WEB 05</h2>
-            <p>INNISFREE</p>
-            <span>코스메틱 브랜드 이니스프리 사이트를 모바일 형태로 리디자인했습니다.</span>
-            <ul>
-                <li><strong>사용 언어:</strong>디자인만 진행</li>
-                <li><strong>사용 프로그램:</strong>Figma, Photoshop</li>
-                <li><strong>기여도:</strong> 기획, 디자인 100%</li>
-                <li><strong>제작 페이지:</strong> MAIN, SUB PAGES</li>
-            </ul>
-            <div class="action-container">
-                <div class="buttons">
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                    <button class="process-btn">
-                        <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
-                        <p class="btn-text">PROCESS</p>
-                    </button>
-                </div>
-                <div class="qr-code">
-                    <img src="img/이니스프리디자인큐알.png" alt="QR Code">
-                </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 04</h2>
+        <p>W Korea</p>
+        <span>패션 브랜드 W KOREA의 디자인을 퍼블리싱했습니다.</span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS</li>
+            <li><strong>사용 프로그램:</strong> Visaul Studio Code</li>
+            <li><strong>기여도:</strong> 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Process</p>
+                </button>
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </button>
+            </div>
+            <div class="qr-code">
+                <img src="img/더블유코리아큐알.png" alt="QR Code">
             </div>
         </div>
     </div>
+</div>
+
+<div class="section-06">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/이니스프리.png" alt="Long Scrolling Image">
+        </div>
+        <div class="screen-text">
+            <p>스<br />크<br />린<br />에<br /> 마<br />우<br />스<br />를<br /> 대<br />면<br /> 화<br />면<br />이<br />
+                움<br />직<br />입<br />니<br />다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 05</h2>
+        <p>INNISFREE</p>
+        <span>코스메틱 브랜드 이니스프리 사이트를 모바일 형태로 리디자인했습니다.</span>
+        <ul>
+            <li><strong>사용 언어:</strong>디자인만 진행</li>
+            <li><strong>사용 프로그램:</strong>Figma, Photoshop</li>
+            <li><strong>기여도:</strong> 기획, 디자인 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN, SUB PAGES</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Process</p>
+                </button>
+                <button class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Figma</p>
+                </button>
+            </div>
+            <div class="qr-code">
+                <img src="img/이니스프리디자인큐알.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
 
-    <div class="section-07">
-        <p>GRAPHIC DESIGN</p>
+<div class="section-07">
+    <p>GRAPHIC DESIGN</p>
+</div>
+
+<section class="mwg_effect000">
+    <div class="side-images left">
+        <img src="img/낙서 강아지 고양이.jpg" alt="Left Image 1">
     </div>
 
-    <section class="mwg_effect000">
-        <div class="side-images left">
-            <img src="img/낙서 강아지 고양이.jpg" alt="Left Image 1">
-        </div>
+    <div class="medias">
+        <div class="media"><img src="img/리본 실버.jpg" alt="1"></div>
+        <div class="media"><img src="img/토마토.png" alt="2"></div>
+        <div class="media"><img src="img/꽃.jpg" alt="3"></div>
+        <div class="media"><img src="img/하트 빨강.jpg" alt="4"></div>
+        <div class="media"><img src="img/사과.jpg" alt="5"></div>
+        <div class="media"><img src="img/하트 투명.png" alt="6"></div>
+        <div class="media"><img src="img/딸기.jpg" alt="7"></div>
+        <div class="media"><img src="img/단추.jpg" alt="8"></div>
+        <div class="media"><img src="img/구름.jpg" alt="9"></div>
+        <div class="media"><img src="img/노란꽃.jpg" alt="10"></div>
+        <div class="media"><img src="img/피자.jpg" alt="11"></div>
+        <div class="media"><img src="img/파란색 주스.jpg" alt="12"></div>
+        <div class="media"><img src="img/씨디3.jpg" alt="13"></div>
+        <div class="media"><img src="img/분홍꽃.jpg" alt="14"></div>
+        <div class="media"><img src="img/단추 분홍.png" alt="15"></div>
+        <div class="media"><img src="img/하트 주황.jpg" alt="16"></div>
+    </div>
 
-        <div class="medias">
-            <div class="media"><img src="img/리본 실버.jpg" alt="1"></div>
-            <div class="media"><img src="img/토마토.png" alt="2"></div>
-            <div class="media"><img src="img/꽃.jpg" alt="3"></div>
-            <div class="media"><img src="img/하트 빨강.jpg" alt="4"></div>
-            <div class="media"><img src="img/사과.jpg" alt="5"></div>
-            <div class="media"><img src="img/하트 투명.png" alt="6"></div>
-            <div class="media"><img src="img/딸기.jpg" alt="7"></div>
-            <div class="media"><img src="img/단추.jpg" alt="8"></div>
-            <div class="media"><img src="img/구름.jpg" alt="9"></div>
-            <div class="media"><img src="img/노란꽃.jpg" alt="10"></div>
-            <div class="media"><img src="img/피자.jpg" alt="11"></div>
-            <div class="media"><img src="img/파란색 주스.jpg" alt="12"></div>
-            <div class="media"><img src="img/씨디3.jpg" alt="13"></div>
-            <div class="media"><img src="img/분홍꽃.jpg" alt="14"></div>
-            <div class="media"><img src="img/단추 분홍.png" alt="15"></div>
-            <div class="media"><img src="img/하트 주황.jpg" alt="16"></div>
-        </div>
+    <div class="side-images right">
+        <img src="img/낙서 고양이.jpg" alt="Right Image 1">
+    </div>
+</section>
 
-        <div class="side-images right">
-            <img src="img/낙서 고양이.jpg" alt="Right Image 1">
-        </div>
-    </section>
+<div class="section-09">
+    <p>PHOTOSHOP</p>
 
-    <div class="section-09">
-        <p>PHOTOSHOP</p>
-
-        <div class="swiper mySwiper2">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>New Text Appears Here</p>
-                            </div>
+    <div class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
                         </div>
                     </div>
-                    <h2>photoshop</h2>
-                    <span>소요시간 : 분</span>
                 </div>
-
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>New Text Appears Here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>photoshop</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>New Text Appears Here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>photoshop</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>New Text Appears Here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>photoshop</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>New Text Appears Here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>photoshop</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>New Text Appears Here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>photoshop</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-                <div class="swiper-slide">
-                    <div class="image-container">
-                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                        <div class="hover-overlay">
-                            <div class="hover-text">
-                                <p>New Text Appears Here</p>
-                            </div>
-                        </div>
-                    </div>
-                    <h2>photoshop</h2>
-                    <span>소요시간 : 분</span>
-                </div>
-
+                <h2>photoshop</h2>
+                <span>소요시간 : 분</span>
             </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>photoshop</h2>
+                <span>소요시간 : 분</span>
+            </div>
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>photoshop</h2>
+                <span>소요시간 : 분</span>
+            </div>
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>photoshop</h2>
+                <span>소요시간 : 분</span>
+            </div>
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>photoshop</h2>
+                <span>소요시간 : 분</span>
+            </div>
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>photoshop</h2>
+                <span>소요시간 : 분</span>
+            </div>
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>New Text Appears Here</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>photoshop</h2>
+                <span>소요시간 : 분</span>
+            </div>
+
+        </div>
+
+        <!-- 페이지네이션 바 -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+
+
+<div class="section-09">
+    <p>ILLUSTRATOR</p>
+
+    <div class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>Illustrator 작업의 특별함</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>illustrator</h2>
+                <span>소요시간 : 분</span>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>Illustrator 작업의 특별함</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>illustrator</h2>
+                <span>소요시간 : 분</span>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>Illustrator 작업의 특별함</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>illustrator</h2>
+                <span>소요시간 : 분</span>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>Illustrator 작업의 특별함</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>illustrator</h2>
+                <span>소요시간 : 분</span>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                    <div class="hover-overlay">
+                        <div class="hover-text">
+                            <p>Illustrator 작업의 특별함</p>
+                        </div>
+                    </div>
+                </div>
+                <h2>illustrator</h2>
+                <span>소요시간 : 분</span>
+            </div>
+
 
             <!-- 페이지네이션 바 -->
             <div class="swiper-pagination"></div>
@@ -746,9 +833,8 @@
     </div>
 
 
-
     <div class="section-09">
-        <p>ILLUSTRATOR</p>
+        <p>EASY TOOLS</p>
 
         <div class="swiper mySwiper2">
             <div class="swiper-wrapper">
@@ -757,11 +843,11 @@
                         <img src="img/포스터 예시.jpg" alt="포스터 예시">
                         <div class="hover-overlay">
                             <div class="hover-text">
-                                <p>Illustrator 작업의 특별함</p>
+                                <p>미리캔버스 사용의 장점</p>
                             </div>
                         </div>
                     </div>
-                    <h2>illustrator</h2>
+                    <h2>miricanvas</h2>
                     <span>소요시간 : 분</span>
                 </div>
 
@@ -770,198 +856,123 @@
                         <img src="img/포스터 예시.jpg" alt="포스터 예시">
                         <div class="hover-overlay">
                             <div class="hover-text">
-                                <p>Illustrator 작업의 특별함</p>
+                                <p>망고보드 사용의 장점</p>
                             </div>
                         </div>
                     </div>
-                    <h2>illustrator</h2>
+                    <h2>mangoboard</h2>
                     <span>소요시간 : 분</span>
                 </div>
-
                 <div class="swiper-slide">
                     <div class="image-container">
                         <img src="img/포스터 예시.jpg" alt="포스터 예시">
                         <div class="hover-overlay">
                             <div class="hover-text">
-                                <p>Illustrator 작업의 특별함</p>
+                                <p>망고보드 사용의 장점</p>
                             </div>
                         </div>
                     </div>
-                    <h2>illustrator</h2>
+                    <h2>mangoboard</h2>
                     <span>소요시간 : 분</span>
                 </div>
-
                 <div class="swiper-slide">
                     <div class="image-container">
                         <img src="img/포스터 예시.jpg" alt="포스터 예시">
                         <div class="hover-overlay">
                             <div class="hover-text">
-                                <p>Illustrator 작업의 특별함</p>
+                                <p>망고보드 사용의 장점</p>
                             </div>
                         </div>
                     </div>
-                    <h2>illustrator</h2>
+                    <h2>mangoboard</h2>
                     <span>소요시간 : 분</span>
                 </div>
-
                 <div class="swiper-slide">
                     <div class="image-container">
                         <img src="img/포스터 예시.jpg" alt="포스터 예시">
                         <div class="hover-overlay">
                             <div class="hover-text">
-                                <p>Illustrator 작업의 특별함</p>
+                                <p>망고보드 사용의 장점</p>
                             </div>
                         </div>
                     </div>
-                    <h2>illustrator</h2>
+                    <h2>mangoboard</h2>
                     <span>소요시간 : 분</span>
                 </div>
-
-
-                <!-- 페이지네이션 바 -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-
-
-        <div class="section-09">
-            <p>EASY TOOLS</p>
-
-            <div class="swiper mySwiper2">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="image-container">
-                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                            <div class="hover-overlay">
-                                <div class="hover-text">
-                                    <p>미리캔버스 사용의 장점</p>
-                                </div>
+                <div class="swiper-slide">
+                    <div class="image-container">
+                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>망고보드 사용의 장점</p>
                             </div>
                         </div>
-                        <h2>miricanvas</h2>
-                        <span>소요시간 : 분</span>
                     </div>
-
-                    <div class="swiper-slide">
-                        <div class="image-container">
-                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                            <div class="hover-overlay">
-                                <div class="hover-text">
-                                    <p>망고보드 사용의 장점</p>
-                                </div>
-                            </div>
-                        </div>
-                        <h2>mangoboard</h2>
-                        <span>소요시간 : 분</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="image-container">
-                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                            <div class="hover-overlay">
-                                <div class="hover-text">
-                                    <p>망고보드 사용의 장점</p>
-                                </div>
-                            </div>
-                        </div>
-                        <h2>mangoboard</h2>
-                        <span>소요시간 : 분</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="image-container">
-                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                            <div class="hover-overlay">
-                                <div class="hover-text">
-                                    <p>망고보드 사용의 장점</p>
-                                </div>
-                            </div>
-                        </div>
-                        <h2>mangoboard</h2>
-                        <span>소요시간 : 분</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="image-container">
-                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                            <div class="hover-overlay">
-                                <div class="hover-text">
-                                    <p>망고보드 사용의 장점</p>
-                                </div>
-                            </div>
-                        </div>
-                        <h2>mangoboard</h2>
-                        <span>소요시간 : 분</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="image-container">
-                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                            <div class="hover-overlay">
-                                <div class="hover-text">
-                                    <p>망고보드 사용의 장점</p>
-                                </div>
-                            </div>
-                        </div>
-                        <h2>mangoboard</h2>
-                        <span>소요시간 : 분</span>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="image-container">
-                            <img src="img/포스터 예시.jpg" alt="포스터 예시">
-                            <div class="hover-overlay">
-                                <div class="hover-text">
-                                    <p>망고보드 사용의 장점</p>
-                                </div>
-                            </div>
-                        </div>
-                        <h2>mangoboard</h2>
-                        <span>소요시간 : 분</span>
-                    </div>
+                    <h2>mangoboard</h2>
+                    <span>소요시간 : 분</span>
                 </div>
-
-                <!-- 페이지네이션 바 -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-
-
-        <div class="section-10">
-            <div class="text-scramble__content">
-                <p id="scramble-text-original">Thank You For Watching! 🖤</p>
-
-                <p class="text-scramble__text" aria-hidden="true">
-                    <span id="scramble-text-1"></span>
-                    <span id="scramble-text-2"> </span>
-                    <span id="scramble-text-3"></span>
-                    <span id="scramble-text-4"></span>
-                    <img id="scramble-cursor" src="img/마지막고양이.png" alt="" />
-                </p>
-            </div>
-        </div>
-
-
-        <div class="section-11">
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h2>Contact me!</h2>
-                    <div class="qr-code">
-                        <img src="img/QR Code.png" alt="QR Code">
+                <div class="swiper-slide">
+                    <div class="image-container">
+                        <img src="img/포스터 예시.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>망고보드 사용의 장점</p>
+                            </div>
+                        </div>
                     </div>
-                    <p>📞010.4766.5224</p>
-                    <p>✉ ggp09222@kakao.com</p>
+                    <h2>mangoboard</h2>
+                    <span>소요시간 : 분</span>
                 </div>
             </div>
+
+            <!-- 페이지네이션 바 -->
+            <div class="swiper-pagination"></div>
         </div>
+    </div>
 
-        <div class="section-12">
-            <p class="site-info">
-                ※ 본 사이트는 상업적 목적이 아닌 개인 포트폴리오 사이트로 제작되었습니다.<br>
-                일부 내용 및 폰트, 이미지 등은 그 출처가 따로 있음을 밝힙니다.
-            </p>
-            <p class="copyright">
-                COPYRIGHT © 2025. kimjisoo All Right Reserved.
-            </p>
+</div>
+
+
+<div class="section-10">
+    <div class="text-scramble__content">
+        <p id="scramble-text-original">Thank You For Watching! 🖤</p>
+
+        <p class="text-scramble__text" aria-hidden="true">
+            <span id="scramble-text-1"></span>
+            <span id="scramble-text-2"> </span>
+            <span id="scramble-text-3"></span>
+            <span id="scramble-text-4"></span>
+            <img id="scramble-cursor" src="img/마지막고양이.png" alt="" />
+        </p>
+    </div>
+</div>
+
+
+<div class="section-11">
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h2>Contact me!</h2>
+            <div class="qr-code">
+                <img src="img/깃허브 큐알.png" alt="QR Code">
+            </div>
+            <p>📞010.4766.5224</p>
+            <p>✉ ggp09222@kakao.com</p>
         </div>
+    </div>
+</div>
+
+<div class="section-12">
+    <p class="site-info">
+        ※ 본 사이트는 상업적 목적이 아닌 개인 포트폴리오 사이트로 제작되었습니다.<br>
+        일부 내용 및 폰트, 이미지 등은 그 출처가 따로 있음을 밝힙니다.
+    </p>
+    <p class="copyright">
+        COPYRIGHT © 2025. kimjisoo All Right Reserved.
+    </p>
+</div>
 
 
 
-        </body>
+</body>
 
 </html>
