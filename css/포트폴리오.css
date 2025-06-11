@@ -840,9 +840,9 @@ body {
 }
 
 .mwg_effect000 .medias img {
-    width: 9vw;
+    width: 150px;
     /* 중앙 이미지 크기 */
-    height: 9vw;
+    height: 150px;
     object-fit: contain;
     border-radius: 4%;
     display: block;
@@ -877,11 +877,9 @@ body {
 /* h2 스타일 */
 .mySwiper2 .swiper-slide h2 {
     font-size: 18px;
-    /* 글꼴 크기 */
-    color: #88bef8;
-    /* 텍스트 색상 */
+    color: #669eda;
     font-weight: 600;
-
+    font-family: 'Pretendard-Regular';
 }
 
 /* span 스타일 */
@@ -1121,11 +1119,13 @@ body {
     position: relative;
     display: inline-block;
     overflow: hidden;
+    width: 100%;
+    height: 497px;
 }
 
 .image-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
 }
 
@@ -1151,13 +1151,14 @@ body {
 .image-container .hover-overlay .hover-text {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 0%;
+    transform: translate(0, -50%);
     text-align: center;
     color: white;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 3;
+    padding: 50px;
 }
 
 .image-container:hover .hover-overlay .hover-text {
