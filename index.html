@@ -155,6 +155,11 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
+
+
+document.querySelector('#topButton').addEventListener('click', () => {
+    scrollToTop()
+})
         var swiper = new Swiper(".mySwiper2", {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -248,11 +253,11 @@
 
 </div> <!-- section-01 end -->
 
-<a href="#top" onclick="scrollToTop(); return false;">
+
     <button id="topButton">
         <img src="img/top버튼.png" alt="Top 버튼" style="width: 80px; height: 80px;">
     </button>
-</a>
+
 
 
 
