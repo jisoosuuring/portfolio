@@ -72,8 +72,12 @@
         font-style: normal;
     }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="lib/gsap.min.js"></script>
+<script src="lib/SplitText.min.js"></script>
+<script src="lib/InertiaPlugin.min.js"></script>
+<script src="lib/ScrambleTextPlugin.min.js"></script>
 <script>
-    // 기존 코드 유지
     window.onload = () => {
         gsap.registerPlugin(SplitText, InertiaPlugin);
 
@@ -147,12 +151,10 @@
             }
         };
 
-        // 추가: 상단 이동 함수
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: "smooth" });
         }
 
-        // Swiper와 기타 기존 기능 유지
         var swiper = new Swiper(".mySwiper2", {
             slidesPerView: 4,
             spaceBetween: 30,
@@ -210,6 +212,8 @@
         });
     };
 </script>
+
+
 
 <header class="header">
     <div class="inner">
