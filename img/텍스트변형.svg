@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_레이어_1" data-name="레이어_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 945.38 1314.15">
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #231815;
+      }
+
+      .st0, .st1 {
+        font-family: RixSejongroGulimPBlack-KSCpc-EUC-H, RixSejongroGulim_Pro;
+        font-size: 150px;
+      }
+
+      .st2 {
+        fill: url(#_무제_그라디언트_2);
+      }
+
+      .st3 {
+        fill: #fff;
+        font-family: MicrosoftUighur-Bold, 'Microsoft Uighur';
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .st1 {
+        fill: #e60012;
+      }
+    </style>
+    <path id="path" d="M138.37,426.46c45.97-155.44,201.99-218.43,328.75-185.2,161.75,42.41,214.62,218.44,137.29,299.16-57.04,59.55-137.11,63.32-304.87,134.99-97.96,41.85-188.34,184.42-64.43,335.12,73.08,88.89,231.88,65.54,324.53,18.32,148.01-75.45,213.12-180.39,202.1-237.7"/>
+    <path id="path1" d="M233.14,486.94c45.97-155.44,201.99-218.43,328.75-185.2,161.75,42.41,214.62,218.44,137.29,299.16-57.04,59.55-137.11,63.32-304.87,134.99-97.96,41.85-188.34,184.42-64.43,335.12,73.08,88.89,231.88,65.54,324.53,18.32,148.01-75.45,213.12-180.39,202.1-237.7"/>
+    <radialGradient id="_무제_그라디언트_2" data-name="무제 그라디언트 2" cx="472.69" cy="657.07" fx="472.69" fy="657.07" r="572.36" gradientUnits="userSpaceOnUse">
+      <stop offset=".55" stop-color="#1a0b08" stop-opacity="0"/>
+      <stop offset=".92" stop-color="#1a0b08" stop-opacity=".58"/>
+      <stop offset=".96" stop-color="#1a0b08" stop-opacity=".65"/>
+      <stop offset=".97" stop-color="#1a0b08" stop-opacity=".77"/>
+      <stop offset="1" stop-color="#1a0b08" stop-opacity=".95"/>
+    </radialGradient>
+  </defs>
+  <text>
+    <textPath xlink:href="#path"><tspan class="st1"><tspan x="0" y="0">There are many variations of </tspan></tspan>
+    </textPath></text>
+  <text>
+    <textPath xlink:href="#path1"><tspan class="st0"><tspan x="0" y="0">There are many variations of </tspan></tspan>
+    </textPath></text>
+  <rect class="st2" width="945.38" height="1314.15"/>
+  <text class="st3" transform="translate(396.93 54.39)"><tspan x="0" y="0">shape your value</tspan></text>
+</svg>
