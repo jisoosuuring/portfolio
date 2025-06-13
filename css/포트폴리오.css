@@ -625,7 +625,7 @@ body {
 }
 
 .section-06 .image-wrapper:hover img {
-    transform: translateY(-95%);
+    transform: translateY(calc(-100% + 500px));
     /* 호버 시 이미지가 위로 이동 */
 }
 
