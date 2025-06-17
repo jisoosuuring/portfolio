@@ -24,6 +24,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    min-width: 1800px;
 }
 
 .header {
@@ -624,7 +625,7 @@ body {
 }
 
 .section-06 .image-wrapper:hover img {
-    transform: translateY(-95%);
+    transform: translateY(calc(-100% + 500px));
     /* 호버 시 이미지가 위로 이동 */
 }
 
