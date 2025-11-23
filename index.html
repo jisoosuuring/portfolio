@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<meta charset="UTF-8">
+<title>Suuring's PortFolio </title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+<link rel="stylesheet" href="css/포트폴리오.css">
+<link rel="icon" type="image/png" sizes="16x16" href="img/고양이로고.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Alexandria:wght@100..900&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Alexandria:wght@100..900&family=Anton&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+    @font-face {
+        font-family: 'SeoulAlrimTTF-Heavy';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2505-1@1.0/SeoulAlrimTTF-Heavy.woff2') format('woff2');
+        font-weight: 900;
+        font-style: normal;
+    }
+
+
+    @font-face {
+        font-family: 'IBMPlexSansKR-Regular';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'HakgyoansimSantteutdotumL';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+        font-weight: 300;
+        font-style: normal;
+    }
+
+
+    @font-face {
+        font-family: 'GmarketSansMedium';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+    @font-face {
+        font-family: 'OwnglyphMoogungChae';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/OwnglyphMoogungChae.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+
+    @font-face {
+        font-family: 'HakgyoansimBadasseugiTTF-L';
+        src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimBadasseugiTTF-L.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+    @font-face {
+        font-family: 'Pretendard-Regular';
+        src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="lib/gsap.min.js"></script>
+<script src="lib/SplitText.min.js"></script>
+<script src="lib/InertiaPlugin.min.js"></script>
+<script src="lib/ScrambleTextPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script>
+    window.onload = () => {
+        gsap.registerPlugin(SplitText, InertiaPlugin);
+
+        document.fonts.ready.then(() => {
+            gsap.set("h2", { opacity: 1 });
+
+            const headlineSplit = SplitText.create(".animated-title", {
+                type: "words",
+                wordsClass: "word++",
+                ignore: "sup"
+            });
+
+            gsap.from(headlineSplit.words, {
+                y: -100,
+                opacity: 0,
+                rotation: "random(-80, 80)",
+                stagger: 0.1,
+                duration: 1,
+                ease: "back"
+            });
+        });
+
+        let oldX = 0, oldY = 0, deltaX = 0, deltaY = 0;
+
+        const root = document.querySelector('.mwg_effect000');
+
+        if (root) {
+            root.addEventListener("mousemove", (e) => {
+                deltaX = e.clientX - oldX;
+                deltaY = e.clientY - oldY;
+                oldX = e.clientX;
+                oldY = e.clientY;
+            });
+
+            root.querySelectorAll('.media').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    const tl = gsap.timeline({
+                        onComplete: () => tl.kill()
+                    });
+
+                    tl.timeScale(1.2);
+
+                    const image = el.querySelector('img');
+                    if (image) {
+                        tl.to(image, {
+                            inertia: {
+                                x: { velocity: deltaX * 30, end: 0 },
+                                y: { velocity: deltaY * 30, end: 0 },
+                            },
+                            duration: 1
+                        });
+
+                        tl.fromTo(image, { rotate: 0 }, {
+                            duration: 0.4,
+                            rotate: (Math.random() - 0.5) * 30,
+                            yoyo: true,
+                            repeat: 1,
+                            ease: 'power1.inOut'
+                        }, '<');
+                    }
+                });
+            });
+        }
+
+        window.onscroll = function () {
+            const topButton = document.getElementById("topButton");
+            if (document.documentElement.scrollTop > 1080 || document.body.scrollTop > 1080) {
+                topButton.style.display = "block";
+            } else {
+                topButton.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+
+
+        document.querySelector('#topButton').addEventListener('click', () => {
+            scrollToTop()
+        })
+        var swiper = new Swiper(".mySwiper2", {
+            slidesPerView: 4,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                type: "progressbar",
+                clickable: true,
+            }
+        });
+
+        const tl = gsap.timeline({ id: "text-scramble", defaults: { ease: "none" } });
+        const cursorTl = gsap.timeline({ repeat: -1 });
+
+        gsap.set("#scramble-text-original", { opacity: 0 });
+
+        cursorTl.to("#scramble-cursor", {
+            opacity: 0,
+            duration: 0.5,
+            ease: "none",
+            delay: 0.2
+        }).to("#scramble-cursor", {
+            opacity: 1,
+            duration: 0.5,
+            ease: "none",
+            delay: 0.2
+        });
+
+        tl.to("#scramble-text-1", {
+            scrambleText: { text: "아직 스크롤 중이신가요?", chars: "Still here?" },
+            duration: 2
+        }).to("#scramble-text-2", {
+            scrambleText: { text: "그럼, 인연입니다.", chars: "Maybe that means", speed: 0.4 },
+            duration: 2
+        }).to("#scramble-text-3", {
+            scrambleText: { text: "우연히 시작된 스크롤이 인연이 되어 멋진 프로젝트로 이어지길 바랍니다.", chars: "to create something", speed: 0.3 },
+            duration: 2
+        }).to("#scramble-text-4", {
+            scrambleText: { text: "Thank You For Watching🖤", chars: "together", speed: 0.3 },
+            duration: 1
+        }).add(cursorTl);
+
+        window.onclick = () => tl.play(0);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const offset = 100;
+                    const targetPosition = targetElement.offsetTop - offset;
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+        Fancybox.bind('[data-fancybox="gallery"]', {
+
+        });
+    };
+</script>
+
+
+
+<header class="header">
+    <div class="inner">
+        <h1 class="logo">
+            <a href="#"><img src="img/로고용 고양이.png" alt=""></a>
+        </h1> <!-- logo end -->
+        <nav class="nav">
+            <ul>
+                <li><a href="#section-01">MAIN</a></li>
+                <li><a href="#section-02">ABOUT</a></li>
+                <li><a href="#section-05">PROJECT</a></li>
+                <li><a href="#section-07">GRAPHIC DESIGN</a></li>
+                <li><a href="#section-11">CONTACT</a></li>
+            </ul>
+        </nav><!-- nav end -->
+    </div> <!-- inner end -->
+</header>
+
+
+
+<div class="section-01" id="section-01">
+    <div class="text">
+        <h2 class="animated-title">VERSATILE</h2>
+    </div>
+    <div class="image">
+        <img src="img/고양이.gif" alt="">
+    </div>
+    <div class="scroll">
+        <img src="img/down.png" alt="">
+        <p>scroll</p>
+    </div>
+
+</div> <!-- section-01 end -->
+
+
+<button id="topButton">
+    <img src="img/top버튼.png" alt="Top 버튼" style="width: 80px; height: 80px;">
+</button>
+
+
+
+
+<div class="section-02" id="section-02">
+    <h2>
+        "데이터로 니즈를 읽고, 디자인으로 마음을 움직입니다."
+    </h2>
+
+
+    <p>
+        <br /> 안녕하세요. 데이터 기반 사고와 명확한 시각적 기획을 강점으로 성장하고 있는 김지수입니다.<br />
+
+        저는 경영정보학을 전공하며 ADsP, SQLD 자격증과 Tableau 시각화 도구를 학습해왔고,<br />
+        이를 통해 데이터를 해석하고 의미 있는 인사이트를 도출하는 과정의 가치를 깊이 이해하게
+        되었습니다.<br />
+        단순히 분석에서 끝나는 것이 아니라,<br /> 그 결과를 누구나 직관적으로 이해할 수 있도록 구조화하고 시각적으로 풀어내는 기획 능력 역시 함께 키워왔습니다.<br />
+        <br />
+        저는 항상 스스로에게 질문합니다.<br />
+        “이 데이터가 말하는 핵심은 무엇인가?”<br />
+        “이 기획이 사용자와 조직에 어떤 변화를 만들 수 있을까?”<br />
+        <br />
+        숫자 뒤에 숨은 맥락을 읽고, 이를 기반으로 전략을 세우며, 복잡한 정보를 명확한 화면과 구조로 설계하는 것.
+        <br />그 과정 전체를 책임질 수 있는 기획자가 되고자 합니다.<br />
+
+</div>
+
+
+
+<div class="section-03" id="section-03">
+
+    <div class="profile-left">
+        <div class="photo">
+            <img src="img/증사.jpg" alt="증명사진">
+        </div>
+        <div class="info">
+            <h3>
+                <span class="name-ko">김지수</span>
+                <span class="name-en">KIM JI SOO</span>
+            </h3>
+            <p>2002.03.07</p>
+            <p><strong>P</strong> 010-4766-5224</p>
+            <p><strong>B</strong> ggp09222@kakao.com</p>
+        </div>
+    </div>
+
+    <div class="profile-right">
+        <div class="career">
+            <h4>CAREER</h4>
+            <ul>
+                <li>부산디자인진흥원 일주지앤에스 인턴</li>
+                <li>부산시립시민도서관 평생학습과 인턴</li>
+                <li>동아창의혁신교육원 학생 인턴 24.09~</li>
+                <li>동아창의혁신교육원 학생 인턴 23.12~24.02</li>
+                <li>부산광역시 경제 진흥원 조찬 드림미 서포터즈</li>
+                <li>YBM 토익어학원 네이버 블로그 포스팅</li>
+                <li>동아대학교 장학생 대표 다우이스트</li>
+                <li>남산정사회복지관 SNS 서포터즈 2기</li>
+                <li>동아대학교 경영정보학과 학생회 IT 정보부장</li>
+
+            </ul>
+        </div>
+
+        <div class="cert-award">
+            <div class="certificate">
+                <h4>CERTIFICATE & LICENSE</h4>
+                <ul>
+                    <li>SQLD(개발자) &nbsp;&nbsp;&nbsp; 2025.06.27</li>
+                    <li>GTQ 1급 &nbsp;&nbsp;&nbsp; 2025.05.16</li>
+                    <li>컴퓨터 활용 능력 2급 &nbsp;&nbsp;&nbsp; 2025.01.28</li>
+                    <li>ADSP &nbsp;&nbsp;&nbsp; 2023.09.15</li>
+                    <li>2종보통 운전면허 &nbsp;&nbsp;&nbsp; 2025.11.10</li>
+                    <li>ESG컨설턴트1, 2급(사설) &nbsp;&nbsp;&nbsp; 2024.08.23</li>
+                    <li>AI코딩지도사자격증(사설) &nbsp;&nbsp;&nbsp; 2023.09.18</li>
+
+
+                </ul>
+            </div>
+            <div class="awards">
+                <h4>AWARDS</h4>
+                <ul>
+                    <li>드림미서포터즈 최우수상 부산광역시장상 (개인)</li>
+                    <li>드림미서포터즈 최우수상 (팀)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="skills">
+            <h4>SKILLS</h4>
+            <div class="icons">
+                <div class="tooltip-box" data-tooltip="Photoshop으로 이미지 보정 및 UI 디자인이 가능합니다.">
+                    <img src="img/photoshop.png" alt="Photoshop">
+                </div>
+                <div class="tooltip-box" data-tooltip="Illustrator로 로고 및 아이콘 디자인을 할 수 있습니다.">
+                    <img src="img/illustrator.png" alt="Illustrator">
+                </div>
+                <div class="tooltip-box" data-tooltip="After Effects로 간단한 컷편집이 가능합니다.">
+                    <img src="img/aftereffects.png" alt="After Effects">
+                </div>
+                <div class="tooltip-box" data-tooltip="HTML5 마크업 구조를 잘 이해하고 작성할 수 있습니다.">
+                    <img src="img/html.png" alt="HTML">
+                </div>
+                <div class="tooltip-box" data-tooltip="CSS로 반응형 웹사이트 스타일링이 가능합니다.">
+                    <img src="img/css.png" alt="CSS">
+                </div>
+                <div class="tooltip-box" data-tooltip="JavaScript로 웹 페이지에 인터랙션 기능을 추가할 수 있습니다.">
+                    <img src="img/skill-icons_javascript.png" alt="JavaScript">
+                </div>
+                <div class="tooltip-box" data-tooltip="간단한 DOM 조작과 애니메이션을 구현할 수 있습니다.">
+                    <img src="img/jquery.png" alt="JavaScript">
+                </div>
+                <div class="tooltip-box" data-tooltip="Visual Studio Code로 효율적인 웹 개발이 가능합니다.">
+                    <img src="img/visual.png" alt="VS Code">
+                </div>
+                <div class="tooltip-box" data-tooltip="GitHub를 통한 버전 관리와 협업이 가능합니다.">
+                    <img src="img/github.png" alt="GitHub">
+                </div>
+                <div class="tooltip-box" data-tooltip="Git으로 프로젝트의 버전 관리를 체계적으로 할 수 있습니다.">
+                    <img src="img/git.png" alt="GitHub">
+                </div>
+
+                <div class="tooltip-box" data-tooltip="PowerPoint로 기획서, 발표자료를 효과적으로 제작할 수 있습니다.">
+                    <img src="img/ppt.png" alt="PowerPoint">
+                </div>
+                <div class="tooltip-box" data-tooltip="Excel로 데이터 정리, 분석 및 통계 처리에 능숙합니다.">
+                    <img src="img/exel.png" alt="Excel">
+                </div>
+
+                <div class="tooltip-box" data-tooltip="MiriCanvas 제작에 능숙합니다.">
+                    <img src="img/미리캔버스.jpg" alt="미리캔버스">
+                </div>
+                <div class="tooltip-box" data-tooltip="MangoBoard 제작에 능숙합니다.">
+                    <img src="img/망고보드.png" alt="망고보드">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="section-05" id="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/polo.png" alt="Long Scrolling Image">
+        </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 01</h2>
+        <p>POLO</p>
+        <b>Style 모던(Modern), 프리미엄(Premium), 미니멀(Minimal)</b>
+        <span> <br /> 목표 글로벌 패션 브랜드 ‘폴로’의 온라인 경험을 현대적으로<br /> 재해석한 리디자인 프로젝트입니다. <br /> 브랜드의 클래식한 감성을 유지하면서도 최신 웹 트렌드에
+            맞춘 깨끗한 구성과
+            직관적인 사용자 흐름을 구현했습니다.<br /> 특히 제품 탐색과 정보 접근성을 높여 브랜드 아이덴티티와 쇼핑 경험을 동시에 강화하는 데 초점을 두었습니다.<br /> </span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS</li>
+            <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+            <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <a href="pdf/폴로 process.pdf" target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Process</p>
+                </a>
+                <a href="https://jisoosuuring.github.io/polo/" target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </a>
+            </div>
+            <div class="qr-code">
+                <img src="img/폴로큐알.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+    <div class="cat-prints">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw1">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw2">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw3">
+        <img src="img/paw.png" alt="Cat Print" class="paw paw4">
+    </div>
+</div>
+
+<div class="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/매트로시티.png" alt="Long Scrolling Image">
+        </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 02</h2>
+        <p>METROCITY</p>
+        <b>Style 럭셔리(Luxury), 인터랙티브(Interactive)</b>
+        <span> <br /> 명품 브랜드 ‘매트로시티’의 강렬한 브랜드 무드를 효과적으로<br /> 전달하는 풀페이지 웹사이트를 제작했습니다.<br />스크롤에 따라 변화하는 인터랙션과 섹션 간 전환
+            효과를 활용해 브랜드의 고급 이미지와 생동감을 극대화했습니다.<br />사용자가 브랜드 스토리·컬렉션을 자연스럽게 몰입하며<br /> 탐색할 수 있는 경험을 제공하는 것이 핵심 목표였습니다.
+            <br /> </span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS, JAVA</li>
+            <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+            <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN, SUB PAGE</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <a href="https://www.figma.com/design/SU4cpMXLqJtIS02RZXahbJ/%EB%A7%A4%ED%8A%B8%EB%A1%9C%EC%8B%9C%ED%8B%B0-%EB%A6%AC%EB%89%B4%EC%96%BC?node-id=15-1362&p=f&t=pcyz58XGFh1hyGdC-0"
+                    target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Figma</p>
+                </a>
+                <a href="https://jisoosuuring.github.io/metrocity/" target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </a>
+            </div>
+            <div class="qr-code">
+                <img src="img/매트로시티 큐알.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/조선미녀.png" alt="Long Scrolling Image">
+        </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 03</h2>
+        <p>조선미녀</p>
+        <b>Style 감성적(Sentimental), 클린(Clean)</b>
+        <span> <br />아름다움과 고요한 감성을 담아낸 뷰티 브랜드 ‘조선미녀’의<br /> 웹사이트를 새롭게 해석한 리디자인 프로젝트입니다.<br />쌀을 비롯한 자연 재료들이 지닌 순백의
+            미감을<br /> 시각적으로 섬세하게 풀어내어<br /> 브랜드만의 순수한 정체성을 따뜻하게 드러내고자 했습니다.<br />다양한 디바이스에 자연스럽게 스며드는 반응형 레이아웃을 통해<br />
+            사용자에게 전통 미학과 제품 이야기가 부드럽게 흐르듯 전달되는 경험을 제공하는 것을 목표로 했습니다.<br />
+        </span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS, JAVA</li>
+            <li><strong>사용 프로그램:</strong> Figma, Visual Studio Code</li>
+            <li><strong>기여도:</strong> 기획, 디자인, 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN, SUB PAGE</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <a href="https://www.figma.com/design/hakD811PMze6kQBGFwPFY9/%EC%A1%B0%EC%84%A0%EB%AF%B8%EB%85%80?node-id=0-1&p=f&t=pcyz58XGFh1hyGdC-0"
+                    target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Figma</p>
+                </a>
+                <a href="https://jisoosuuring.github.io/beautyofjoseon/" target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </a>
+            </div>
+            <div class="qr-code">
+                <img src="img/조선미녀큐알.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-05">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/더블유컨셉.png" alt="Long Scrolling Image">
+        </div>
+        <div class="screen-text">
+            <p>모니터에 마우스를 대면 화면이 움직입니다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 04</h2>
+        <p>W Korea</p>
+        <b>Style 모던(Modern), 미니멀(Minimal)</b>
+        <span> <br/> 기존 W Korea 웹페이지를 참고하여 구조, 레이아웃 스타일을<br /> 퍼블리싱 중심으로 완성도 있게 구현하는 것을 목표로 삼았습니다. <br/> </span>
+        <ul>
+            <li><strong>사용 언어:</strong> HTML, CSS</li>
+            <li><strong>사용 프로그램:</strong> Visaul Studio Code</li>
+            <li><strong>기여도:</strong> 퍼블리싱 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <a href="https://jisoosuuring.github.io/w-korea/" target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Go Web</p>
+                </a>
+            </div>
+            <div class="qr-code">
+                <img src="img/더블유코리아큐알.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="section-06" id="section-06">
+    <div class="mockup">
+        <div class="image-wrapper">
+            <img src="img/이니스프리.png" alt="Long Scrolling Image">
+        </div>
+        <div class="screen-text">
+            <p>스<br />크<br />린<br />에<br /> 마<br />우<br />스<br />를<br /> 대<br />면<br /> 화<br />면<br />이<br />
+                움<br />직<br />입<br />니<br />다.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>WEB 05</h2>
+        <p>INNISFREE</p>
+        <b>Style 감성적(Sentimental), 클린(Clean)</b>
+        <br />
+        <span> <br/> 자연주의 화장품 브랜드 ‘이니스프리’와 트위티의 콜라보레이션을 중심으로 모바일 웹을 리디자인한 프로젝트입니다.<br />
+            밝고 경쾌한 트위티의 캐릭터성을 자연 기반 디자인 시스템에 조화롭게 통합하여<br />
+            사용자가 이벤트 제품과 한정 굿즈를 직관적으로 발견할 수 있도록 전체 UI 흐름을 재구성했습니다.<br />
+            모바일 환경에 최적화된 구조로 이니스프리의 자연 친화적 브랜드 이미지와 트위티의 유쾌한 매력을 동시에 전달하는 경험을 목표로 했습니다. <br /> </span>
+        <ul>
+            <li><strong>사용 언어:</strong>디자인만 진행</li>
+            <li><strong>사용 프로그램:</strong>Figma, Photoshop</li>
+            <li><strong>기여도:</strong> 기획, 디자인 100%</li>
+            <li><strong>제작 페이지:</strong> MAIN, SUB PAGES</li>
+        </ul>
+        <div class="action-container">
+            <div class="buttons">
+                <a href="pdf/이니스프리process.pdf" target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Process</p>
+                </a>
+                <a href="https://www.figma.com/design/fVHyZcCuBmO9C7kNsOFrJ9/%EC%9D%B4%EB%8B%88%EC%8A%A4%ED%94%84%EB%A6%AC-%EC%A0%9C%EC%B6%9C%EB%B3%B8?node-id=12-45&p=f&t=bznp77TTtC83v20k-0"
+                    target="_blank" class="process-btn">
+                    <img src="img/뼈 하얀색.jpg" alt="Default Button" class="btn-img">
+                    <p class="btn-text">Figma</p>
+                </a>
+            </div>
+            <div class="qr-code">
+                <img src="img/이니스프리디자인큐알.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="section-07" id="section-07">
+    <p>GRAPHIC DESIGN</p>
+</div>
+
+<section class="mwg_effect000">
+    <div class="side-images left">
+        <img src="img/낙서 강아지 고양이.jpg" alt="Left Image 1">
+    </div>
+
+    <div class="medias">
+        <div class="media"><img src="img/회색고양이.png" alt="1"></div>
+        <div class="media"><img src="img/토마토.png" alt="2"></div>
+        <div class="media"><img src="img/꽃.png" alt="3"></div>
+        <div class="media"><img src="img/아이콘 6 초록 단추.jpg" alt="4"></div>
+        <div class="media"><img src="img/사과.png" alt="5"></div>
+        <div class="media"><img src="img/분홍 별.png" alt="6"></div>
+        <div class="media"><img src="img/딸기.png" alt="7"></div>
+        <div class="media"><img src="img/단추.png" alt="8"></div>
+        <div class="media"><img src="img/구름.png" alt="9"></div>
+        <div class="media"><img src="img/의자.png" alt="10"></div>
+        <div class="media"><img src="img/피자.png" alt="11"></div>
+        <div class="media"><img src="img/초록색 주스.png" alt="12"></div>
+        <div class="media"><img src="img/아이콘 5 노란고양이.png" alt="13"></div>
+        <div class="media"><img src="img/고양이 옷.png" alt="14"></div>
+        <div class="media"><img src="img/단추 분홍.png" alt="15"></div>
+        <div class="media"><img src="img/어항.png" alt="16"></div>
+    </div>
+
+    <div class="side-images right">
+        <img src="img/고양이 낙서.png" alt="Right Image 1">
+    </div>
+</section>
+<div class="section-09" id="section-09">
+    <p>PHOTOSHOP</p>
+    <p>각 이미지에 마우스 호버 시 관련된 설명이 나옵니다.</p>
+
+    <div class="swiper mySwiper2">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <a data-fancybox="gallery" data-src="img/포토샵.jpg" data-caption="포토샵을 이용한 포스터들은 감각적이고 독특한 디자인과 색감을 활용하여 제작해봤습니다. 이 포스터는 Photoshop의 Bevel & Emboss 효과를
+                                    활용하여
+                                    제작했습니다.">
+                        <img src="img/포토샵.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>포토샵을 이용한 포스터들은 감각적이고 독특한 디자인과 색감을 활용하여 제작해봤습니다. 이 포스터는 Photoshop의 Bevel & Emboss 효과를
+                                    활용하여
+                                    제작했습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h2>소요시간 : 20분</h2>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <a data-fancybox="gallery" data-src="img/포스터 1.jpg" data-caption="Photoshop을 사용하여 이미지 위에 텍스트 효과를 적용하고, 감각적인 디자인 요소를 배치하여 포스터를 제작했습니다. 텍스트에 레이어 스타일을 활용해
+                                    시각적
+                                    임팩트를 더했으며, 배경 이미지와의 조화를 고려하여 색상과 폰트를 정교하게 조정했습니다.">
+                        <img src="img/포스터 1.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>Photoshop을 사용하여 이미지 위에 텍스트 효과를 적용하고, 감각적인 디자인 요소를 배치하여 포스터를 제작했습니다. 텍스트에 레이어 스타일을 활용해
+                                    시각적
+                                    임팩트를 더했으며, 배경 이미지와의 조화를 고려하여 색상과 폰트를 정교하게 조정했습니다.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h2>소요시간 : 8분</h2>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <a data-fancybox="gallery" data-src="img/포스터 2.jpg" data-caption="사람 이미지를 누끼딴 후, 배경으로 텍스트를 배치하여 독특한 분위기를 연출했습니다. 텍스트 효과로 Bevel and Emboss와 그림자 효과를 적용하여
+                                    입체감을 더했으며, 노란색과 빨간색의 조화를 통해 상큼하고 독특한 디자인을 완성했습니다.">
+                        <img src="img/포스터 2.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>사람 이미지를 누끼딴 후, 배경으로 텍스트를 배치하여 독특한 분위기를 연출했습니다. 텍스트 효과로 Bevel and Emboss와 그림자 효과를 적용하여
+                                    입체감을 더했으며, 노란색과 빨간색의 조화를 통해 상큼하고 독특한 디자인을 완성했습니다.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h2>소요시간 : 15분</h2>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <a data-fancybox="gallery" data-src="img/포토샵 4.jpg" data-caption="텍스트 배치와 색감을 조화롭게 구성하고, 이미지 배치 및 펜툴을 사용해 독창적인 포인트를 준 포스터입니다. 주요 디자인 요소는 텍스트의 위치와 크기를
+                                    조정하여
+                                    메시지를 강조하였고, 색상 대비를 활용해 시각적 임팩트를 강화했습니다.">
+                        <img src="img/포토샵 4.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>텍스트 배치와 색감을 조화롭게 구성하고, 이미지 배치 및 펜툴을 사용해 독창적인 포인트를 준 포스터입니다. 주요 디자인 요소는 텍스트의 위치와 크기를
+                                    조정하여
+                                    메시지를 강조하였고, 색상 대비를 활용해 시각적 임팩트를 강화했습니다. </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h2>소요시간 : 30분</h2>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <a data-fancybox="gallery" data-src="img/여행지GIF연습.gif" data-caption="Photoshop의 GIF 애니메이션 기능을 활용하여, 다중 레이어를 기반으로 구성된 프레임 애니메이션과 감각적인 디자인 요소를 결합한 포스터입니다.
+                                    타임라인을
+                                    활용해 각 프레임의 전환을 정교하게 설정함으로써 동적인 시각적 표현을 완성했습니다.">
+                        <img src="img/여행지GIF연습.gif" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>Photoshop의 GIF 애니메이션 기능을 활용하여, 다중 레이어를 기반으로 구성된 프레임 애니메이션과 감각적인 디자인 요소를 결합한 포스터입니다.
+                                    타임라인을
+                                    활용해 각 프레임의 전환을 정교하게 설정함으로써 동적인 시각적 표현을 완성했습니다.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h2>소요시간 : 25분</h2>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <a data-fancybox="gallery" data-src="img/포스터 3 복사.jpg" data-caption="도형의 투명도를 조절하고 텍스트의 채우기를 제거한 뒤 외곽선만 남겨 독특한 디자인을 완성한 포스터입니다. 배경 이미지와 도형의 레이어를 조합하여 시각적
+                                    균형을
+                                    맞췄으며, 텍스트의 외곽선과 도형의 투명도를 활용해 간결하면서도 세련된 느낌을 표현했습니다. 불필요한 요소를 배제하고 깔끔한 구성으로 메시지 전달력을
+                                    극대화한
+                                    디자인입니다.">
+                        <img src="img/포스터 3 복사.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>도형의 투명도를 조절하고 텍스트의 채우기를 제거한 뒤 외곽선만 남겨 독특한 디자인을 완성한 포스터입니다. 배경 이미지와 도형의 레이어를 조합하여 시각적
+                                    균형을
+                                    맞췄으며, 텍스트의 외곽선과 도형의 투명도를 활용해 간결하면서도 세련된 느낌을 표현했습니다. 불필요한 요소를 배제하고 깔끔한 구성으로 메시지 전달력을
+                                    극대화한
+                                    디자인입니다.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h2>소요시간 : 12분</h2>
+            </div>
+
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <a data-fancybox="gallery" data-src="img/디졸브-흐힘효과-노이즈.jpg"
+                        data-caption="배경과 텍스트 입력 후 텍스트만 디졸브를 줬습니다. 이후 텍스트들을 고급개체로 변환 후 흐림필터-필드 적용 후 배경에 노이즈를 깔아 완성했습니다.">
+                        <img src="img/디졸브-흐힘효과-노이즈.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>배경과 텍스트 입력 후 텍스트만 디졸브를 줬습니다. 이후 텍스트들을 고급개체로 변환 후 흐림필터-필드 적용 후 배경에 노이즈를 깔아 완성했습니다.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h2>소요시간 : 12분</h2>
+            </div>
+
+
+            <div class="swiper-slide">
+                <div class="image-container">
+                    <a data-fancybox="gallery" data-src="img/설명란.jpg"
+                        data-caption="❗이 사진은 설명란을 위해 제작한 것이며 제가 제작한 것이 아닙니다❗">
+                        <img src="img/설명란.jpg" alt="포스터 예시">
+                        <div class="hover-overlay">
+                            <div class="hover-text">
+                                <p>포토샵으로 제작하는 사진 편집과 포스터 제작은 2025/6/11부터 제작한 것이며 계속해서 준비중입니다! 매일 하루에 2~3개씩은 업로드 예정이니 아직
+                                    게시물이 적더라도 많은 관심부탁드립니다!</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h2>소요시간 : 12분</h2>
+            </div>
+        </div>
+
+
+
+        <div class="section-09">
+            <p>ILLUSTRATOR</p>
+            <p>각 이미지에 마우스 호버 시 관련된 설명이 나옵니다.</p>
+
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/SUMMER.jpg" data-caption="Adobe Illustrator의 3D 효과를 활용하여, 입체적인 디자인 요소를 구현한 작품입니다. Extrude & Bevel 기능을
+                                            사용해
+                                            다중 레이어 기반으로 깊이감과 디테일을 더했고, 색상 그라데이션과 조명 효과를 결합하여 독창적인 입체 표현을 완성했습니다.">
+                                <img src="img/SUMMER.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>Adobe Illustrator의 3D 효과를 활용하여, 입체적인 디자인 요소를 구현한 작품입니다. Extrude & Bevel 기능을
+                                            사용해
+                                            다중 레이어 기반으로 깊이감과 디테일을 더했고, 색상 그라데이션과 조명 효과를 결합하여 독창적인 입체 표현을 완성했습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 15분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/꽃와이어프레임 .jpg" data-caption="3D 효과와 와이어프레임 옵션을 활용하여, 다층적인 구조와 기하학적 선의 조화를 기반으로 제작된 포스터입니다. 다중 레이어로 구성된 입체적
+                                            디자인
+                                            요소와 섬세한 곡선 패턴을 결합하여 독창적인 비주얼을 구현했습니다">
+                                <img src="img/꽃와이어프레임 .jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>3D 효과와 와이어프레임 옵션을 활용하여, 다층적인 구조와 기하학적 선의 조화를 기반으로 제작된 포스터입니다. 다중 레이어로 구성된 입체적
+                                            디자인
+                                            요소와 섬세한 곡선 패턴을 결합하여 독창적인 비주얼을 구현했습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 20분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/3d-일러스트2.jpg" data-caption="도형과 펜툴을 이용하여 디자인을 제작하고 3D효과의 부풀리기 효과를 사용하여 엠보싱같은 효과를 더했습니다. 재질과 조명/ 깊이와 볼륨을
+                                            조절하여
+                                            좀 더 입체감있게 구현했습니다.">
+                                <img src="img/3d-일러스트2.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>도형과 펜툴을 이용하여 디자인을 제작하고 3D효과의 부풀리기 효과를 사용하여 엠보싱같은 효과를 더했습니다. 재질과 조명/ 깊이와 볼륨을
+                                            조절하여
+                                            좀 더 입체감있게 구현했습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 30분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/일러스트.jpg" data-caption="사각형에 모서리를 조절하여 하트를 만들고 하트를 최상위 개체로 둔 채 텍스트에 envelope Distort, Make with Top
+                                            Object로 설정하고 확장한 뒤 블랜드, 거리조절을 통해 입체감을 살렸습니다. 그림자 효과도 넣어 입체감이 더 도드라져 보이게
+                                            했습니다.">
+                                <img src="img/일러스트.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>사각형에 모서리를 조절하여 하트를 만들고 하트를 최상위 개체로 둔 채 텍스트에 envelope Distort, Make with Top
+                                            Object로 설정하고 확장한 뒤 블랜드, 거리조절을 통해 입체감을 살렸습니다. 그림자 효과도 넣어 입체감이 더 도드라져 보이게
+                                            했습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 18분</h2>
+                    </div>
+
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/메탈-3d.jpg" data-caption="그라디언트와 크롬 효과, 3d 부풀리기의 재질과 조명을 조절하여 제작한 메탈릭한 포스터입니다. 처음 시도해보는 것이어서 다른 제작물보단
+                                            시간이 다소 걸렸습니다.">
+                                <img src="img/메탈-3d.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>그라디언트와 크롬 효과, 3d 부풀리기의 재질과 조명을 조절하여 제작한 메탈릭한 포스터입니다. 처음 시도해보는 것이어서 다른 제작물보단
+                                            시간이 다소 걸렸습니다.
+                                    </div>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 25분</h2>
+                    </div>
+
+
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/하트-텍스트.jpg" data-caption="하트 모양의 도형을 직접 제작한 후, Object > Envelope Distort > Make with Top Object 기능을
+                                            활용하여
+                                            텍스트를 해당 도형 형태에 맞게 변형시켰습니다. 이후, 원본 도형에는 블러(Blur) 효과를 적용하여 부드럽게 번지는 듯한 시각적 효과를
+                                            부여함으로써, 텍스트와 도형이 조화롭게 어우러지는 디자인을 완성하였습니다.">
+                                <img src="img/하트-텍스트.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p> 하트 모양의 도형을 직접 제작한 후, Object > Envelope Distort > Make with Top Object 기능을
+                                            활용하여
+                                            텍스트를 해당 도형 형태에 맞게 변형시켰습니다. 이후, 원본 도형에는 블러(Blur) 효과를 적용하여 부드럽게 번지는 듯한 시각적 효과를
+                                            부여함으로써, 텍스트와 도형이 조화롭게 어우러지는 디자인을 완성하였습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 15분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/풀.jpg" data-caption="펜툴을 활용하여 풀의 곡선을 정교하게 표현하였으며, 도형 요소를 이용해 여러 군데에 주황색 박스를 배치하였습니다. 대비되는 색상을
+                                            효과적으로
+                                            사용하여 시각적 집중도를 높이고, 전체적으로 조화롭고 매력적인 포스터 디자인을 완성하였습니다.">
+                                <img src="img/풀.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>펜툴을 활용하여 풀의 곡선을 정교하게 표현하였으며, 도형 요소를 이용해 여러 군데에 주황색 박스를 배치하였습니다. 대비되는 색상을
+                                            효과적으로
+                                            사용하여 시각적 집중도를 높이고, 전체적으로 조화롭고 매력적인 포스터 디자인을 완성하였습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 15분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/일러스트사과.jpg"
+                                data-caption="펜툴을 사용하여 제작한 사과 일러스트에 그레인(Grain) 효과를 적용하여 표면의 질감을 사실감 있게 표현하였습니다.">
+                                <img src="img/일러스트사과.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>펜툴을 사용하여 제작한 사과 일러스트에 그레인(Grain) 효과를 적용하여 표면의 질감을 사실감 있게 표현하였습니다. </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 20분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/꽃입체효과.jpg"
+                                data-caption="도형과 브러쉬를 이용하여 디자인을 제작하고 3D효과의 부풀리기 효과를 사용하여 엠보싱같은 효과를 더했습니다.">
+                                <img src="img/꽃입체효과.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>도형과 브러쉬를 이용하여 디자인을 제작하고 3D효과의 부풀리기 효과를 사용하여 엠보싱같은 효과를 더했습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 15분</h2>
+                    </div>
+
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/텍스트변형.jpg" data-caption="펜툴로 모양을 잡고 펜툴 모양에 따라 텍스트가 생성되게 한 후 패스상의 문자, 기울이기 효과를 줬습니다. 배경은 그라데이션으로 설정하여
+                                            텍스트 도형에 시선이 집중되게 했습니다.">
+                                <img src="img/텍스트변형.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>펜툴로 모양을 잡고 펜툴 모양에 따라 텍스트가 생성되게 한 후 패스상의 문자, 기울이기 효과를 줬습니다. 배경은 그라데이션으로 설정하여
+                                            텍스트 도형에 시선이 집중되게 했습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 20분</h2>
+                    </div>
+
+
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/입체곰돌이.jpg"
+                                data-caption="2020버전에서 사용할 수 있는 3D 효과를 사용해보았습니다.">
+                                <img src="img/입체곰돌이.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>2020버전에서 사용할 수 있는 3D 효과를 사용해보았습니다. </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 20분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/텍스트재질바꾸기.jpg"
+                                data-caption="텍스트에 효과-왜곡과 변형-거칠게하기를 사용하여 텍스트를 뽀송한 재질로 보이게 하고 펜툴을 이용하여 고양이의 귀와 꼬리를 그렸습니다.">
+                                <img src="img/텍스트재질바꾸기.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>텍스트에 효과-왜곡과 변형-거칠게하기를 사용하여 텍스트를 뽀송한 재질로 보이게 하고 펜툴을 이용하여 고양이의 귀와 꼬리를 그렸습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 20분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/흘러내리는텍스트.jpg"
+                                data-caption="일러스트에 변형 도구를 사용하여 흘러내리는 듯한 텍스트를 완성했습니다.">
+                                <img src="img/흘러내리는텍스트.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>일러스트에 변형 도구를 사용하여 흘러내리는 듯한 텍스트를 완성했습니다.</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 20분</h2>
+                    </div>
+
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <a data-fancybox="gallery" data-src="img/일러스트-튜브.jpg"
+                                data-caption="3D 효과의 축 중심 회전 중 아트 매핑을 활용하여 텍스트가 도형의 형태에 맞게 감싸지는 효과를 넣었습니다.">
+                                <img src="img/일러스트-튜브.jpg" alt="포스터 예시">
+                                <div class="hover-overlay">
+                                    <div class="hover-text">
+                                        <p>3D 효과의 축 중심 회전 중 아트 매핑을 활용하여 텍스트가 도형의 형태에 맞게 감싸지는 효과를 넣었습니다. </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <h2>소요시간 : 20분</h2>
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <div class="section-09">
+            <p>EASY TOOLS</p>
+            <p>각 이미지에 마우스 호버 시 관련된 설명이 나옵니다.</p>
+
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/조희창의 클래식 오디세이.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>포토샵을 활용해 정밀한 배경 제거 작업을 수행하고, 평론가의 요구에 맞춘 세련된 포스터 디자인을 완성했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 50분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/도서관에 온 작가들.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>부산 전 지역 도서관에 배포된 포스터로, 매월 달라지는 작가님들을 한눈에 확인할 수 있도록 달력 이미지를 활용하여 배치했습니다. 또한, 가독성을
+                                        높이기 위해 핵심 정보를 중심으로 구성했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 1시간</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/북릴레이 1.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>책 표지와 조화를 이루는 포스터를 제작하기 위해 색감과 전체적인 분위기를 세심하게 조율했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 45분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/북릴레이5.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>직전 포스터와 동일한 방식으로 제작했으며, 월별 테마에 따라 휴가철 분위기를 반영한 배경을 활용했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 :10분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img//2024 고등학생 학년말 자기개발 학교지원 메이커 교실 1.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>고등학생을 타깃으로 톡톡 튀는 색감을 활용해, 잠시 스쳐 지나가도 눈에 띄도록 제작했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 30분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/동서양 미술사의 비교.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>동서양 미술사를 주제로, 동양과 서양을 대표하는 이미지를 담아 프로그램의 이해도를 높이고자 제작했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 40분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/시 낭송 발표회 A4.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>시인 윤동주의 감성을 떠올리며 제작한 포스터로, 시 낭송의 감성적 분위기를 담아냈습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 30분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/시민도서관6.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>성인을 대상으로 한 경제 수업 포스터로, 직관적이고 귀여운 이미지를 활용해 경제 수업의 딱딱한 이미지를 완화하고 친근함을 강조했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 30분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/조선을 다스린 문장들.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>부서 특성상 주 이용자인 어르신들을 고려하여 텍스트 크기를 확대하고, 긴 글을 간결하게 줄이며, 직관적인 디자인을 적용했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 20분</h2>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/정진호 작가.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p>중학생을 대상으로 한 포스터로, 귀여운 색감과 디자인을 활용해 자연스럽게 관심을 끌고자 제작했습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>소요시간 : 50분</h2>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="image-container">
+                            <img src="img/고양이포스터.jpg" alt="포스터 예시">
+                            <div class="hover-overlay">
+                                <div class="hover-text">
+                                    <p> 이외의 더 다양한 크기의 배너/현수막/포스터도<br /> 많이 제작해봤습니다!<br /><br />
+                                        ❗ 이 고양이 포스터는<br /> 제가 제작한 포스터가 아닙니다!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>notice</h2>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+
+        <!-- 페이지네이션 바 -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+
+<div class="section-10">
+    <div class="text-scramble__content">
+        <p id="scramble-text-original">Thank You For Watching! 🖤</p>
+
+        <p class="text-scramble__text" aria-hidden="true">
+            <span id="scramble-text-1"></span>
+            <span id="scramble-text-2"> </span>
+            <span id="scramble-text-3"></span>
+            <span id="scramble-text-4"></span>
+            <img id="scramble-cursor" src="img/마지막고양이.png" alt="" />
+        </p>
+    </div>
+</div>
+
+
+<div class="section-11" id="section-11">
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h2>Contact me!</h2>
+            <div class="qr-code">
+                <img src="img/깃허브 큐알.png" alt="QR Code">
+            </div>
+            <p>📞010.4766.5224</p>
+            <p>✉ ggp09222@kakao.com</p>
+            <p>✨포트폴리오는 지속적으로 업데이트 될 예정입니다✨</p>
+        </div>
+    </div>
+</div>
+
+<div class="section-12">
+    <p class="site-info">
+        ※ 본 사이트는 상업적 목적이 아닌 개인 포트폴리오 사이트로 제작되었습니다.<br>
+        일부 내용 및 폰트, 이미지 등은 그 출처가 따로 있음을 밝힙니다.
+    </p>
+    <p class="copyright">
+        COPYRIGHT © 2025. kimjisoo All Right Reserved.
+    </p>
+</div>
+
+
+
+</body>
+
+</html>
